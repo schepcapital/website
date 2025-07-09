@@ -31,7 +31,7 @@
 @media (max-width: 600px) {
     :root {
         --font-size-slogan: 2rem;
-        --font-size-cagr: 2.4rem;
+        --font-size-cagr: 2.3rem;
         --font-size-description: 1rem;
         --spacing-card-padding-vertical: 1.5rem;
         --spacing-card-padding-horizontal: 1.25rem;
@@ -55,4 +55,17 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+.responsive-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* On mobile: force equal min height */
+@media (max-width: 600px) {
+    .responsive-card {
+        min-height: 460px; /* or adjust to what looks right */
+    }
 }

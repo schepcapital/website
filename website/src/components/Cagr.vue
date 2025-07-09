@@ -85,23 +85,4 @@ onMounted(async () => {
   color: var(--color-primary);
   font-weight: 700;
 }
-
-@media (max-width: 600px) {
-  .slogan {
-    font-size: 1.8rem;
-    text-align: center;
-  }
-
-  .cagr-value {
-    font-size: 1.6rem;
-    text-align: center;
-  }
-
-  .description {
-    font-size: 0.95rem;
-    padding: 0 1rem;
-    text-align: center;
-  }
-}
-
 </style>

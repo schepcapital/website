@@ -80,14 +80,35 @@ import GradientCard from './GradientCard.vue'
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
 }
 
+/* On small screens (mobile) */
+@media (max-width: 600px) {
+  .photo {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 190px;
+    height: 190px;
+  }
+}
+
 
 /* Text block beside photo */
 .info {
   display: flex;
   flex-direction: column;
   justify-content: center;  /* centers vertically within its height */
-  height: 160px;            /* same as photo height */
+  height: auto;            /* same as photo height */
   gap: 0.3rem;              /* small vertical gap between name and title */
+}
+
+@media (max-width: 600px) {
+  .info {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .name {

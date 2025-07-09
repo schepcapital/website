@@ -19,7 +19,7 @@
   box-shadow: var(--shadow-light), var(--shadow-medium);
   padding: var(--spacing-card-padding-vertical) var(--spacing-card-padding-horizontal);
   max-width: 720px;
-  margin: 2rem auto;
+  margin: 1rem auto;
   color: var(--color-text-main);
   text-align: center;
   font-family: var(--font-family-base);
