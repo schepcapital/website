@@ -18,8 +18,7 @@ import GradientCard from './GradientCard.vue'
         </div>
 
         <p class="bio">
-           My passion for finance, math and computer science have led me to create the
-          strategy and technology from scratch.
+           My passion for finance and trading experience has led me to create this private fund.
         </p>
       </div>
     </a>
