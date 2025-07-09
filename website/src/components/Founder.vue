@@ -1,0 +1,124 @@
+<script setup lang="ts">
+import photo from '../assets/photo.jpg'
+import GradientCard from './GradientCard.vue'
+</script>
+
+<template>
+  <GradientCard>
+    <a href="https://www.linkedin.com/in/rsrs/" target="_blank" rel="noopener noreferrer" class="founder-link">
+      <div class="founder">
+        <h1 class="slogan">Meet the <span class="highlight">founder</span></h1>
+
+        <div class="profile">
+          <img :src="photo" alt="Reinier Schep" class="photo" />
+          <div class="info">
+            <h2 class="name">Reinier Schep</h2>
+            <p class="title">Founder of <strong>Schep Capital</strong></p>
+          </div>
+        </div>
+
+        <p class="bio">
+           My passion for finance, math and computer science have led me to create the
+          strategy and technology from scratch.
+        </p>
+      </div>
+    </a>
+  </GradientCard>
+</template>
+
+<style scoped>
+.founder-link {
+  display: block;
+  color: inherit;           /* keep text colors */
+  text-decoration: none;    /* remove underline */
+  cursor: pointer;
+  /* Make it fill the card */
+  width: 100%;
+  height: 100%;
+}
+
+.founder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Heading */
+.slogan {
+  font-size: var(--font-size-slogan);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+
+.highlight {
+  color: var(--color-primary);
+}
+
+/* Photo + Name/Title */
+.profile {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Text block beside photo */
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* centers vertically within its height */
+  height: 160px;            /* same as photo height */
+  gap: 0.3rem;              /* small vertical gap between name and title */
+}
+
+.name {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin: 0;
+  /* remove padding or margin here */
+}
+
+.title {
+  font-size: 1.05rem;
+  color: var(--color-text-main);
+  margin: 0;
+  align-self: center;       /* center horizontally */
+}
+
+
+
+.title strong {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Bio below everything */
+.bio {
+  font-size: var(--font-size-description);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+</style>

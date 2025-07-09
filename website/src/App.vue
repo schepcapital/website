@@ -1,14 +1,36 @@
 <script setup lang="ts">
-import Person from "./components/Person.vue";
+import Founder from "./components/Founder.vue";
 import Philosophy from "./components/Philosophy.vue";
-
+import Cagr from "./components/Cagr.vue";
 </script>
 
 <template>
-  <Person></Person>
+  <div class="card-layout">
+    <Cagr></Cagr>
+    <Founder></Founder>
+  </div>
   <philosophy></philosophy>
 </template>
 
 <style scoped>
+.card-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
 
+@media (min-width: 768px) {
+  .card-layout {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .card-layout > * {
+    flex: 1;
+    max-width: 50%;
+  }
+}
 </style>
