@@ -18,7 +18,7 @@ import GradientCard from './GradientCard.vue'
         </div>
 
         <p class="bio">
-           My passion for finance and trading experience has led me to create this private fund.
+           My passion for finance, math and machine learning combined with my trading experience has led me to create this private fund.
         </p>
       </div>
     </a>
@@ -97,12 +97,13 @@ import GradientCard from './GradientCard.vue'
   display: flex;
   flex-direction: column;
   justify-content: center;  /* centers vertically within its height */
-  height: auto;            /* same as photo height */
+  height: 160px;            /* same as photo height */
   gap: 0.3rem;              /* small vertical gap between name and title */
 }
 
 @media (max-width: 600px) {
   .info {
+    height: auto;
     padding-top: 0;
     padding-bottom: 0;
     margin-top: 0;

@@ -35,7 +35,7 @@ onMounted(async () => {
 
     <p class="description" v-if="cagrBefore !== null && cagrAfter !== null">
       In-sample CAGR was <strong>{{ cagrBefore }}%</strong> and
-      out-of-sample CAGR is <strong>{{ cagrAfter }}%</strong>, transaction cost of 0.1% included.
+      out-of-sample CAGR is <strong>{{ cagrAfter }}%</strong>, transaction costs of 0.1% included.
     </p>
     <p v-else>Loading data...</p>
   </GradientCard>

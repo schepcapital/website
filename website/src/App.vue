@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Founder from "./components/Founder.vue";
-import Philosophy from "./components/Philosophy.vue";
 import Cagr from "./components/Cagr.vue";
 </script>
 
@@ -9,7 +8,6 @@ import Cagr from "./components/Cagr.vue";
     <Cagr></Cagr>
     <Founder></Founder>
   </div>
-  <philosophy></philosophy>
 </template>
 
 <style scoped>
