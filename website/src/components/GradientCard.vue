@@ -1,12 +1,13 @@
+<script setup lang="ts">
+import { ref } from "vue";
+
+</script>
+
 <template>
   <div class="gradient-card">
     <slot />
   </div>
 </template>
-
-<script setup lang="ts">
-// No script needed here unless you want props later
-</script>
 
 <style scoped>
 .gradient-card {
@@ -18,11 +19,23 @@
   border-radius: var(--border-radius-card);
   box-shadow: var(--shadow-light), var(--shadow-medium);
   padding: var(--spacing-card-padding-vertical) var(--spacing-card-padding-horizontal);
-  max-width: 720px;
-  margin: 1rem auto;
+  margin: 2rem;
   color: var(--color-text-main);
   text-align: center;
   font-family: var(--font-family-base);
+
+  animation: fadeInDown 1.5s ease forwards;
 }
 
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 </style>
+

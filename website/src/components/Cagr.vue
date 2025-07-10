@@ -30,12 +30,11 @@ onMounted(async () => {
       navigated <span class="highlight">simply</span>
     </h1>
 
-    <h2 class="cagr-value" v-if="cagrAfter !== null">{{ `CAGR: ${cagrAfter}%` }}</h2>
+    <h2 class="cagr-value" v-if="cagrAfter !== null">{{ `CAGR: ${cagrAfter}%` }}*</h2>
     <h2 class="cagr-value" v-else>Loading CAGR...</h2>
 
     <p class="description" v-if="cagrBefore !== null && cagrAfter !== null">
-      In-sample CAGR was <strong>{{ cagrBefore }}%</strong> and
-      out-of-sample CAGR is <strong>{{ cagrAfter }}%</strong>, transaction costs of 0.1% included.
+      *transaction costs of 0.1% included, out-of-sample.
     </p>
     <p v-else>Loading data...</p>
   </GradientCard>
@@ -48,7 +47,7 @@ onMounted(async () => {
 .slogan {
   font-size: var(--font-size-slogan);
   font-weight: 700;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
@@ -72,17 +71,5 @@ onMounted(async () => {
   text-shadow: 1px 1px 3px rgba(42, 113, 208, 0.3);
 }
 
-.description {
-  font-size: var(--font-size-description);
-  font-weight: 500;
-  color: var(--color-text-secondary);
-  max-width: 620px;
-  margin: 0 auto;
-  line-height: 1.5;
-}
 
-.description strong {
-  color: var(--color-primary);
-  font-weight: 700;
-}
 </style>

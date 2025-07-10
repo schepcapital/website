@@ -5,7 +5,7 @@
     --color-text-main: #2c3e50;
     --color-text-secondary: #4b5563;
     --color-background-gradient-start: #fefefe;
-    --color-background-gradient-end: #e8f0fe;
+    --color-background-gradient-end: #ffffff;
     --color-shadow-light: rgba(0, 0, 0, 0.05);
     --color-shadow-medium: rgba(0, 0, 0, 0.1);
 
@@ -57,11 +57,27 @@ a {
     color: inherit;
 }
 
+.description {
+    font-size: var(--font-size-description);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.description strong {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
 .responsive-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
+
 
 /* On mobile: force equal min height */
 @media (max-width: 600px) {
