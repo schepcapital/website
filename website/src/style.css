@@ -71,11 +71,54 @@ a {
     font-weight: 700;
 }
 
+.slogan {
+    font-size: var(--font-size-slogan);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    user-select: none;
+}
+
+.highlight {
+    color: var(--color-primary);
+}
+
 .responsive-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
+
+.card-layout {
+    display: flex;
+    flex-direction: row;      /* default: horizontal */
+    align-items: stretch;     /* stretch items vertically */
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.card-layout > * {
+    flex: 1 1 50%;
+    max-width: 50%;
+}
+
+@media (max-width: 767px) {
+    .card-layout {
+        flex-direction: column; /* switch to vertical on small screens */
+        align-items: center;    /* center items horizontally */
+        justify-content: center;/* center vertically */
+    }
+
+    .card-layout > * {
+        flex: 0 1 auto;
+        max-width: none;        /* full width on small screens */
+    }
+}
+
+
 
 
 

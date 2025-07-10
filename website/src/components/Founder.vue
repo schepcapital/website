@@ -46,19 +46,6 @@ import GradientCard from './GradientCard.vue'
   margin: 0 auto;
 }
 
-/* Heading */
-.slogan {
-  font-size: var(--font-size-slogan);
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  user-select: none;
-}
-
-.highlight {
-  color: var(--color-primary);
-}
 
 /* Photo + Name/Title */
 .profile {

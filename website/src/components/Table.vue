@@ -113,8 +113,8 @@ function getCellClass(val: number | undefined, months: YearlyData, month: string
 }
 
 .table-wrapper {
-  width: 100%;
-  max-width: 60vw;      /* max width of the table container */
+  width: 80%;
+  max-width: 50vw;      /* max width of the table container */
   margin: 1rem auto;
   overflow-x: auto;      /* scroll only if needed */
   -webkit-overflow-scrolling: touch;
@@ -123,7 +123,7 @@ function getCellClass(val: number | undefined, months: YearlyData, month: string
 }
 
 table {
-  width: 100%;           /* table fills container */
+  width: 80%;           /* table fills container */
   border-collapse: collapse;
   table-layout: auto;    /* columns sized by content */
 }
@@ -133,7 +133,7 @@ thead {
 }
 
 th, td {
-  padding: 0.4rem 0.6rem;
+  padding: 0.4rem 0.2rem;
   text-align: center;
   border: 1px solid #ddd;
   white-space: normal;   /* allow wrapping so table can shrink */
