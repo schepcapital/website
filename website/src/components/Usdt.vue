@@ -12,7 +12,11 @@ import GradientCard from "./GradientCard.vue";
       <p style="text-align: left;" class="description">
         This second table shows the historical returns in terms of <strong>USD</strong>, since this is what matters directly to investors.
         The trading strategy doesn't directly optimize for USD returns, but as shown in the table, it still shows exquisite results.
-        This fund is well suited for investors with a large risk appetite seeking tremendous returns.
+        This fund is well suited for investors with <strong> substantial risk appetite</strong>  seeking <strong>tremendous returns</strong>.
+        The strategy is designed such that it captures <strong>extraordinary gains</strong> which compensate all the losing trades.
+        It operates strictly in the crypto market, <strong>fully automated</strong>. Trying to capture big moves in the market early is at
+        the heart of the strategy, and it gets out with minimal losses if the market moves opposite. Therefore, this fund <strong>thrives in volatility</strong>,
+        precisely what the crypto market is known for.
       </p>
       <Table metric="usdt" />
     </div>

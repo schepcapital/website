@@ -18,7 +18,7 @@ import GradientCard from "./GradientCard.vue";
           more Bitcoin, regardless of what the USD price of a Bitcoin is at any given time.
           The accumulation of more Bitcoin, along a price increase in Bitcoin in terms of USD leads to <strong>exponential growth</strong>
           in bull markets and it <strong>mitigates losses</strong> in bear markets.
-          In the long term, growth far exceeds traditional investing methods as shown by these metrics.
+          In the long term, this growth far exceeds traditional investing methods.
         </p>
     </div>
   </GradientCard>
