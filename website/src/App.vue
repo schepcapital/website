@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import Founder from "./components/Founder.vue";
 import Cagr from "./components/Cagr.vue";
+import SchepCapital from "./components/SchepCapital.vue";
 </script>
 
 <template>
+  <SchepCapital></SchepCapital>
   <div class="card-layout">
     <Cagr></Cagr>
     <Founder></Founder>
