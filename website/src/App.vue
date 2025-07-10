@@ -4,6 +4,7 @@ import Cagr from "./components/Cagr.vue";
 import SchepCapital from "./components/SchepCapital.vue";
 import Btc from "./components/Btc.vue";
 import Usdt from "./components/Usdt.vue";
+import EquityCurve from "./components/EquityCurve.vue";
 </script>
 
 <template>
@@ -16,6 +17,8 @@ import Usdt from "./components/Usdt.vue";
     <Btc></Btc>
     <div class="card-layout"></div>
     <Usdt></Usdt>
+    <div class="card-layout"></div>
+    <EquityCurve></EquityCurve>
     <div class="card-layout"></div>
   </div>
 </template>

@@ -9,6 +9,7 @@ import GradientCard from "./GradientCard.vue";
       Historical returns in terms of <span class="highlight">USD</span>
     </h2>
     <div class="table-with-text">
+      <Table metric="usdt" />
       <p style="text-align: left;" class="description">
         This second table shows the historical returns in terms of <strong>USD</strong>, since this is what matters directly to investors.
         The trading strategy doesn't directly optimize for USD returns, but as shown in the table, it still shows exquisite results.
@@ -18,7 +19,7 @@ import GradientCard from "./GradientCard.vue";
         the heart of the strategy, and it gets out with minimal losses if the market moves opposite. Therefore, this fund <strong>thrives in volatility</strong>,
         precisely what the crypto market is known for.
       </p>
-      <Table metric="usdt" />
+
     </div>
   </GradientCard>
 </template>
@@ -45,18 +46,19 @@ import GradientCard from "./GradientCard.vue";
 
 .table-with-text {
   display: flex;
-  flex-wrap: wrap;         /* allow wrapping to next line */
-  gap: 1.5rem;
-  align-items: flex-start; /* align items at the top */
-  justify-content: space-between; /* space between horizontally */
+  flex-direction: row;
+  align-items: center;     /* center horizontally */
+  text-align: center;      /* optional: center text */
+  gap: 2rem;
+  max-width: 100%;
 }
 
 .table-with-text > * {
-  flex: 1 1 300px;         /* flexible width, minimum 300px */
-  min-width: 250px;        /* prevent too narrow */
+  flex: 1 1 300px;
+  min-width: 250px;
 }
 
-/* On small screens, stack vertically */
+/* stacks vertically on small screens */
 @media (max-width: 768px) {
   .table-with-text {
     flex-direction: column;
