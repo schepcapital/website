@@ -51,7 +51,8 @@ const chartOptions = ref({
             return this.getLabelForValue(value);
           }
         },
-        maxRotation: 0,
+        maxRotation: window.innerWidth > 480 ? 45 : 0,
+        minRotation: window.innerWidth > 480 ? 45 : 0,
         autoSkip: false,
       }
     }
@@ -139,15 +140,24 @@ onMounted(async () => {
 <style scoped>
 .chart-scroll-wrapper {
   width: 100%;
+  height: 100%; /* Fills the height of parent */
   overflow-x: auto;
 }
 
 .chart-container {
   min-width: 600px;
-  height: 400px;
+  height: 100%; /* Full height of wrapper */
   padding: 1rem;
   box-sizing: border-box;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-container canvas {
+  height: 100% !important; /* Force canvas to fill container */
+  width: 100% !important;
 }
 
 @media (max-width: 768px) {
@@ -165,4 +175,5 @@ onMounted(async () => {
     padding: 0.5rem;
   }
 }
+
 </style>

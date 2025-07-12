@@ -1,0 +1,38 @@
+<script setup lang="ts">
+function handleClick() {
+  alert('Button clicked!')
+}
+</script>
+
+<template>
+  <button class="primary-button" @click="handleClick">
+    Click Me
+  </button>
+</template>
+
+<style scoped>
+.primary-button {
+  padding: .75rem 1.5rem;
+  margin: 4rem 2rem;
+  background-color: var(--color-primary);
+  color: white;
+  font-family: var(--font-family-base);
+  font-size: 2rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  box-shadow: var(--shadow-light);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
+}
+
+.primary-button:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: var(--shadow-medium);
+}
+
+.primary-button:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+</style>

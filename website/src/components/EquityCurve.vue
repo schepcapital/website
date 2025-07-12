@@ -11,11 +11,14 @@ import RatiosText from "./RatiosText.vue";
     <h1 class="slogan">
       Equity curve of <span class="highlight">returns</span>
     </h1>
-    <Chart />
     <div class="card-layout">
-      <Ratios></Ratios>
-      <RatiosText></RatiosText>
+      <Chart />
+      <div class="">
+        <Ratios></Ratios>
+        <RatiosText></RatiosText>
+      </div>
     </div>
+
   </GradientCard>
 </template>
 
