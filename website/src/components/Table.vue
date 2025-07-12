@@ -65,7 +65,6 @@ function getCellClass(val: number | undefined, months: YearlyData, month: string
   return '';
 }
 
-
 </script>
 
 <template>
@@ -113,20 +112,23 @@ function getCellClass(val: number | undefined, months: YearlyData, month: string
 }
 
 .table-wrapper {
-  width: 80%;
-  max-width: 50vw;      /* max width of the table container */
   margin: 1rem auto;
-  overflow-x: auto;      /* scroll only if needed */
-  -webkit-overflow-scrolling: touch;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  padding: 0 1rem;
+  overflow: auto;
+  height: 100%;                   /* fill available vertical space */
+  max-height: 80%;
 }
 
 table {
-  width: 80%;           /* table fills container */
+  width: 100%;
+  max-width: 1000px;
+  min-width: 500px;
   border-collapse: collapse;
-  table-layout: auto;    /* columns sized by content */
+  table-layout: auto;
+  height: 100%;                   /* grow vertically */
 }
+
+
 
 thead {
   background-color: #f5f5f5;
@@ -157,6 +159,5 @@ td.highlight {
   background-color: #d1e7dd;
   color: #0f5132;
 }
-
 
 </style>

@@ -1,14 +1,15 @@
 <script setup lang="ts">
 function handleClick() {
-  alert('Button clicked!')
+  window.open('https://your-google-form-link.com', '_blank')
 }
 </script>
 
 <template>
   <button class="primary-button" @click="handleClick">
-    Click Me
+    Open the Google Form
   </button>
 </template>
+
 
 <style scoped>
 .primary-button {
@@ -35,4 +36,13 @@ function handleClick() {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
+
+@media (max-width: 480px) {
+  .primary-button {
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    margin: 2rem 1rem;
+  }
+}
+
 </style>

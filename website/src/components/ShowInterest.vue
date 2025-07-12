@@ -10,8 +10,11 @@ import Button from "./Button.vue";
     Show your <span class="highlight">interest</span>
   </h1>
   <p class="description">
-    Below is a button which will take you to a Google Form where interest in participation in the fund can be expressed.
+    Click the button below to visit a <strong>Google Form</strong> where you can express your interest in participating in the fund.
+    Completing the form does <strong>not obligate</strong> you, but it allows me to contact you if a spot becomes available.
+    I appreciate your interest and look forward to possibly <strong>welcoming you aboard</strong>.
   </p>
+
   <Button></Button>
 </GradientCard>
 </template>
