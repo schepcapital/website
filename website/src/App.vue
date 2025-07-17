@@ -7,9 +7,11 @@ import ReturnsOverview from "./components/ReturnsOverview.vue";
 import Ratios from "./components/Ratios.vue";
 import FinalQuote from "./components/FinalQuote.vue";
 import ShowInterest from "./components/ShowInterest.vue";
+import LandingView from "./components/LandingView.vue";
 </script>
 
 <template>
+  <LandingView></LandingView>
   <div class="background">
     <SchepCapital />
     <div class="card-layout">
