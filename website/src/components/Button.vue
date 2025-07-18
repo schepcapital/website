@@ -37,7 +37,7 @@ function handleClick() {
   outline-offset: 2px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 800px) {
   .primary-button {
     padding: 0.5rem 1rem;
     font-size: 1.2rem;

@@ -28,7 +28,7 @@
 }
 
 /* 📱 Responsive adjustments */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     :root {
         --font-size-slogan: 2rem;
         --font-size-cagr: 2.3rem;
@@ -37,6 +37,13 @@
         --spacing-card-padding-horizontal: 1.25rem;
     }
 }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
 
 /* Base resets (optional, global site hygiene) */
 body {
@@ -64,6 +71,9 @@ a {
     max-width: 720px;
     margin: 1rem auto;
     line-height: 1.5;
+    flex: 1 1 60%;     /* text gets 60% of space */
+    /*padding-left: 1.5rem; !* spacing between table and text *!*/
+    text-align: left;
 }
 
 .description strong {
@@ -105,7 +115,7 @@ a {
     max-width: 50%;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 800px) {
     .card-layout {
         flex-direction: column; /* switch to vertical on small screens */
         align-items: center;    /* center items horizontally */
@@ -115,6 +125,10 @@ a {
     .card-layout > * {
         flex: 0 1 auto;
         max-width: none;        /* full width on small screens */
+    }
+
+    .description {
+        padding: 0.5rem;
     }
 }
 

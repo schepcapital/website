@@ -71,5 +71,10 @@ onMounted(async () => {
   text-shadow: 1px 1px 3px rgba(42, 113, 208, 0.3);
 }
 
+.description {
+  text-align: center;
+}
+
+
 
 </style>

@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar">
-    <img src="/logo.webp" alt="Logo" class="logo-image" />
+    <img src="../assets/logo.webp" alt="Logo" class="logo-image" />
   </nav>
 </template>
 

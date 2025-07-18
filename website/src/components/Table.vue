@@ -97,7 +97,6 @@ function getCellClass(val: number | undefined, months: YearlyData, month: string
 </template>
 
 <style scoped>
-
 /* Highlighting */
 .bg-positive {
   background-color: rgba(0, 255, 0, 0.3);
@@ -112,23 +111,29 @@ function getCellClass(val: number | undefined, months: YearlyData, month: string
 }
 
 .table-wrapper {
-  margin: 1rem auto;
-  padding: 0 1rem;
   overflow: auto;
-  height: 100%;                   /* fill available vertical space */
-  max-height: 80%;
+  max-height: 80vh;
 }
+
+td:first-child,
+th:first-child {
+  position: sticky;
+  left: 0;
+  background: white;
+  /* Remove border, add shadow instead */
+  border: none;
+  box-shadow: 2px 0 5px -1px rgba(44, 62, 80, 0.8);
+  z-index: 10;
+}
+
+
+
 
 table {
   width: 100%;
-  max-width: 1000px;
-  min-width: 500px;
+  min-width: 800px;
   border-collapse: collapse;
-  table-layout: auto;
-  height: 100%;                   /* grow vertically */
 }
-
-
 
 thead {
   background-color: #f5f5f5;
@@ -137,27 +142,20 @@ thead {
 th, td {
   padding: 0.4rem 0.2rem;
   text-align: center;
-  border: 1px solid #ddd;
-  white-space: normal;   /* allow wrapping so table can shrink */
+  white-space: nowrap;
   font-size: 0.85rem;
   color: #333;
-  word-wrap: break-word; /* break long words if needed */
-  max-width: 80px;       /* optional: limit max cell width */
 }
 
 th {
   font-weight: 600;
-  color: #222;
   background-color: #f0f0f0;
+  z-index: 2; /* ensures header is above sticky cells if overlapping */
 }
 
 td strong {
   font-weight: 700;
 }
 
-td.highlight {
-  background-color: #d1e7dd;
-  color: #0f5132;
-}
 
 </style>

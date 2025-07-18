@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import Founder from "./components/Founder.vue";
 import Cagr from "./components/Cagr.vue";
-import SchepCapital from "./components/SchepCapital.vue";
 import EquityCurve from "./components/EquityCurve.vue";
 import ReturnsOverview from "./components/ReturnsOverview.vue";
-import Ratios from "./components/Ratios.vue";
 import FinalQuote from "./components/FinalQuote.vue";
 import ShowInterest from "./components/ShowInterest.vue";
 import LandingView from "./components/LandingView.vue";
@@ -13,7 +11,6 @@ import LandingView from "./components/LandingView.vue";
 <template>
   <LandingView></LandingView>
   <div class="background">
-    <SchepCapital />
     <div class="card-layout">
       <Cagr />
       <Founder />
@@ -24,7 +21,7 @@ import LandingView from "./components/LandingView.vue";
         The strategy was deployed in the real world at the beginning of <strong>June 2024</strong>.<br><br>
         It is built on the <strong>core belief</strong> that accumulating more Bitcoin over time is a powerful path to long-term wealth.<br><br>
         Combining increased Bitcoin holdings with a rise in Bitcoin's USD price results in <strong>exponential growth</strong> during bull markets and helps <strong>mitigate losses</strong> during bear markets.<br><br>
-        Over the long run, this approach significantly outperforms traditional investment methods.
+        Over the long run, this approach significantly outperforms <strong>traditional</strong> investment methods.
       </p>
 
 

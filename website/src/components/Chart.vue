@@ -147,6 +147,7 @@ onMounted(async () => {
 .chart-container {
   min-width: 600px;
   height: 100%; /* Full height of wrapper */
+  min-height: 500px;
   padding: 1rem;
   box-sizing: border-box;
   margin: 0 auto;
@@ -155,10 +156,6 @@ onMounted(async () => {
   justify-content: center;
 }
 
-.chart-container canvas {
-  height: 100% !important; /* Force canvas to fill container */
-  width: 100% !important;
-}
 
 @media (max-width: 768px) {
   .chart-container {
@@ -167,13 +164,4 @@ onMounted(async () => {
     padding: 0.75rem;
   }
 }
-
-@media (max-width: 480px) {
-  .chart-container {
-    min-width: 100%;
-    height: 50vh;
-    padding: 0.5rem;
-  }
-}
-
 </style>
