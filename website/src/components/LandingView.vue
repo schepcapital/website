@@ -47,7 +47,8 @@ onMounted(() => {
     <div class="text-overlay">
       <div class="branding">
 <!--        <img src="../assets/logo.webp" alt="Logo" class="logo-image" />-->
-        <h1 class="slogan">Navigating complexity with simplicity</h1>
+<!--        <h1 class="slogan">Navigating complexity with simplicity</h1>-->
+        <h1 class="slogan">Private wealth, <br> built for you</h1>
 <!--        <h1 class="slogan">Navigating the waves of finance with rock solid strategy</h1>-->
       </div>
       <p class="cagr">CAGR: {{ displayValue }}%*</p>
