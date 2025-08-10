@@ -43,8 +43,12 @@
 html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
     overflow-x: hidden;
+    /* overflow-y: hidden; // optional, if vertical scroll is unwanted */
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
 }
+
 
 
 /* Base resets (optional, global site hygiene) */

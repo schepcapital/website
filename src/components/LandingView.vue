@@ -1,7 +1,22 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted} from 'vue'
 import SchepCapital from './SchepCapital.vue'
 import { TRANSACTION_COST_NOTE } from '../constants'
+
+function setVh() {
+  const vh = window.innerHeight * 0.01
+  document.documentElement.style.setProperty('--vh', `${vh}px`)
+}
+
+onMounted(() => {
+  setVh()
+  window.addEventListener('resize', setVh)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', setVh)
+})
+
 
 interface Stats {
   'cagr_usdt_before_june2024_%': number
@@ -74,7 +89,7 @@ onMounted(async () => {
 <style scoped>
 .fullscreen-bg {
   position: relative;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   width: 99.9vw;
   overflow: hidden;
 }
@@ -87,7 +102,6 @@ onMounted(async () => {
   min-height: 100vh;
   object-fit: cover;
   z-index: -2;
-  animation: fadeLoop 10s linear infinite;
 }
 
 .overlay {
@@ -137,4 +151,5 @@ onMounted(async () => {
   font-size: clamp(0.8rem, 2vw, 1rem);
   opacity: 0.7;
 }
+
 </style>
