@@ -45,13 +45,16 @@ const metricLabel = computed(() => {
 }
 
 .table-with-text > .table-container {
-  flex: 1 1 40%;     /* table gets 40% of horizontal space */
-  max-width: 880px;  /* optional: prevent table from growing too large */
+  padding: 3rem;
+  flex: 1; /* take remaining space */
+  min-width: 0; /* prevents overflow issues */
 }
 
 .description {
+  flex: 0 0 1300px; /* fixed width of 300px */
   padding-left: 4rem;
 }
+
 
 /* On small screens, stack vertically */
 @media (max-width: 1200px) {
@@ -61,6 +64,8 @@ const metricLabel = computed(() => {
 
   .description {
     padding-left: 0.5rem;
+    flex: unset;   /* let height be auto */
+    width: auto;   /* ignore the fixed 1300px */
   }
 
 }

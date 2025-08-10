@@ -55,6 +55,13 @@ const chartOptions = ref({
         minRotation: window.innerWidth > 480 ? 45 : 0,
         autoSkip: false,
       }
+    },
+    y: {
+      ticks: {
+        callback: function(value) {
+          return '$' + value.toLocaleString();
+        }
+      }
     }
   }
 })

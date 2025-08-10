@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import {ref, onMounted, nextTick} from 'vue';
 import type { PropType } from 'vue';
 
 interface MonthlyReturns {
@@ -33,7 +33,14 @@ const tableData = ref<DataSet>({});
 onMounted(async () => {
   const res = await fetch('/data.json');
   tableData.value = await res.json();
+
+  await nextTick(); // wait for Vue to render all tables
+
+  document.querySelectorAll<HTMLElement>('.table-wrapper').forEach(wrapper => {
+    wrapper.scrollLeft = wrapper.scrollWidth; // scroll each table fully to the right
+  });
 });
+
 
 function format(val: number | undefined): string {
   return typeof val === 'number' ? `${val.toFixed(2)}%` : '?';

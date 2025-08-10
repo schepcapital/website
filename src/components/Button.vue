@@ -13,12 +13,12 @@ function handleClick() {
 
 <style scoped>
 .primary-button {
-  padding: .75rem 1.5rem;
-  margin: 4rem 2rem;
+  padding: .55rem 1.2rem;
+  margin: 6rem 2rem;
   background-color: var(--color-primary);
   color: white;
-  font-family: var(--font-family-base);
-  font-size: 2rem;
+  font-family: var(--font-family-base), serif;
+  font-size: 1.5rem;
   font-weight: 600;
   border: none;
   border-radius: 8px;

@@ -83,8 +83,8 @@ onMounted(async () => {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
   object-fit: cover;
   z-index: -2;
   animation: fadeLoop 10s linear infinite;
@@ -124,13 +124,13 @@ onMounted(async () => {
 .slogan {
   font-size: clamp(2rem, 6vw, 5rem);
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 0.1vh;
 }
 
 .cagr {
   font-size: clamp(1.5rem, 4vw, 3rem);
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1vh;
 }
 
 .note {
