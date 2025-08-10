@@ -1,18 +1,43 @@
 <script setup lang="ts">
-import Founder from "./components/Founder.vue";
-import Cagr from "./components/Cagr.vue";
-import EquityCurve from "./components/EquityCurve.vue";
-import ReturnsOverview from "./components/ReturnsOverview.vue";
-import FinalQuote from "./components/FinalQuote.vue";
-import ShowInterest from "./components/ShowInterest.vue";
-import LandingView from "./components/LandingView.vue";
+import { ref, onMounted } from 'vue'
+
+import Founder from './components/Founder.vue'
+import Cagr from './components/Cagr.vue'
+import EquityCurve from './components/EquityCurve.vue'
+import ReturnsOverview from './components/ReturnsOverview.vue'
+import FinalQuote from './components/FinalQuote.vue'
+import ShowInterest from './components/ShowInterest.vue'
+import LandingView from './components/LandingView.vue'
+
+interface Stats {
+  'cagr_usdt_before_june2024_%': number
+  'cagr_usdt_after_june2024_%': number
+}
+
+const cagrBefore = ref<number | null>(null)
+const cagrAfter = ref<number | null>(null)
+
+const note = ""
+
+onMounted(async () => {
+  try {
+    const res = await fetch('/stats.json')
+    if (!res.ok) throw new Error('Failed to load stats.json')
+
+    const data: Stats = await res.json()
+    cagrBefore.value = data['cagr_usdt_before_june2024_%']
+    cagrAfter.value = data['cagr_usdt_after_june2024_%']
+  } catch (error) {
+    console.error(error)
+  }
+})
 </script>
 
 <template>
   <LandingView></LandingView>
   <div class="background">
     <div class="card-layout">
-      <Cagr />
+      <Cagr :cagr-before="cagrBefore" :cagr-after="cagrAfter"  />
       <Founder />
     </div>
     <ReturnsOverview metric="btc">

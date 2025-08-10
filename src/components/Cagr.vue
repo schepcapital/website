@@ -1,26 +1,12 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
 import GradientCard from './GradientCard.vue'
+import { TRANSACTION_COST_NOTE } from '../constants'
 
-interface Stats {
-  'cagr_usdt_before_june2024_%': number
-  'cagr_usdt_after_june2024_%': number
-}
-
-const cagrBefore = ref<number | null>(null)
-const cagrAfter = ref<number | null>(null)
-
-onMounted(async () => {
-  try {
-    const res = await fetch('/stats.json')
-    if (!res.ok) throw new Error('Failed to load stats.json')
-    const data: Stats = await res.json()
-    cagrBefore.value = data['cagr_usdt_before_june2024_%']
-    cagrAfter.value = data['cagr_usdt_after_june2024_%']
-  } catch (error) {
-    console.error(error)
-  }
-})
+defineProps<{
+  cagrBefore: number | null
+  cagrAfter: number | null
+  note: string | null
+}>()
 </script>
 
 <template>
@@ -34,7 +20,7 @@ onMounted(async () => {
     <h2 class="cagr-value" v-else>Loading CAGR...</h2>
 
     <p class="description" v-if="cagrBefore !== null && cagrAfter !== null">
-      *transaction costs of 0.1% included, out-of-sample.
+      {{ TRANSACTION_COST_NOTE }}
     </p>
     <p v-else>Loading data...</p>
   </GradientCard>

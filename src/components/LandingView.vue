@@ -1,17 +1,22 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import SchepCapital from "./SchepCapital.vue";
+import SchepCapital from './SchepCapital.vue'
+import { TRANSACTION_COST_NOTE } from '../constants'
 
-const displayValue = ref("0.0") // now a string
-const targetCAGR = 110.1
+interface Stats {
+  'cagr_usdt_before_june2024_%': number
+  'cagr_usdt_after_june2024_%': number
+}
+
+const displayValue = ref('0.0')
+const targetCAGR = ref<number | null>(null)
 const duration = 5000 // ms
-
 
 function easeOutExpo(t: number): number {
   return t === 1 ? 1 : 1 - Math.pow(2, -10 * t)
 }
 
-onMounted(() => {
+function startAnimation() {
   const startTime = performance.now()
 
   const animate = (time: number) => {
@@ -19,47 +24,68 @@ onMounted(() => {
     const rawProgress = Math.min(elapsed / duration, 1)
     const easedProgress = easeOutExpo(rawProgress)
 
-    displayValue.value = (easedProgress * targetCAGR).toFixed(1)
+    displayValue.value = ((targetCAGR.value ?? 0) * easedProgress).toFixed(2)
 
     if (rawProgress < 1) {
       requestAnimationFrame(animate)
     } else {
-      displayValue.value = targetCAGR.toFixed(1)
+      displayValue.value = (targetCAGR.value ?? 0).toFixed(2)
     }
   }
 
   requestAnimationFrame(animate)
+}
+
+onMounted(async () => {
+  try {
+    const res = await fetch('/stats.json')
+    if (!res.ok) throw new Error('Failed to load stats.json')
+    const data: Stats = await res.json()
+
+    targetCAGR.value = data['cagr_usdt_after_june2024_%']
+
+    startAnimation()
+  } catch (err) {
+    console.error(err)
+  }
 })
 </script>
 
-
-
 <template>
   <div class="fullscreen-bg">
-    <SchepCapital></SchepCapital>
+    <SchepCapital />
     <video autoplay muted loop playsinline class="background-video">
-      <source src="../assets/landingview.mp4" type="video/mp4" />
+      <source src="../assets/short_wave.webm" type="video/webm" />
       Your browser does not support the video tag.
     </video>
 
-    <div class="overlay"></div> <!-- NEW -->
+    <div class="overlay"></div>
 
     <div class="text-overlay">
       <div class="branding">
-<!--        <img src="../assets/logo.webp" alt="Logo" class="logo-image" />-->
-<!--        <h1 class="slogan">Navigating complexity with simplicity</h1>-->
-        <h1 class="slogan">Private wealth, <br> built for you</h1>
-<!--        <h1 class="slogan">Navigating the waves of finance with rock solid strategy</h1>-->
+        <h1 class="slogan">Private wealth, <br /> built for you</h1>
       </div>
       <p class="cagr">CAGR: {{ displayValue }}%*</p>
-      <p class="note">*Transaction costs of 0.1% included, out-of-sample performance.</p>
+      <p class="note">{{ TRANSACTION_COST_NOTE }}</p>
     </div>
-
   </div>
 </template>
 
-
 <style scoped>
+@keyframes fadeLoop {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 
 .fullscreen-bg {
   position: relative;
@@ -76,10 +102,8 @@ onMounted(() => {
   height: 100vh;
   object-fit: cover;
   z-index: -2;
-  animation: fadeLoop 10s linear infinite; /* Adjust timing to match your video length */
+  animation: fadeLoop 10s linear infinite;
 }
-
-
 
 .overlay {
   position: absolute;
@@ -87,9 +111,10 @@ onMounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4); /* Darkens video for text contrast */
+  background: rgba(0, 0, 0, 0.4);
   z-index: -1;
 }
+
 .text-overlay {
   position: relative;
   z-index: 1;
@@ -111,26 +136,11 @@ onMounted(() => {
   margin-bottom: 10vh;
 }
 
-.logo-image {
-  border-radius: 10px; /* rounds all corners by 10px */
-  width: 30vw;
-  height: auto;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.logo-image:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 14px rgba(0, 255, 255, 0.9));
-}
-
 .slogan {
   font-size: clamp(2rem, 6vw, 5rem);
   font-weight: bold;
   margin-bottom: 1rem;
 }
-
 
 .cagr {
   font-size: clamp(1.5rem, 4vw, 3rem);
@@ -142,5 +152,4 @@ onMounted(() => {
   font-size: clamp(0.8rem, 2vw, 1rem);
   opacity: 0.7;
 }
-
 </style>
