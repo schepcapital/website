@@ -17,7 +17,6 @@ interface Stats {
 const cagrBefore = ref<number | null>(null)
 const cagrAfter = ref<number | null>(null)
 
-const note = ""
 
 onMounted(async () => {
   try {
@@ -76,13 +75,16 @@ onMounted(async () => {
 
 <style scoped>
 .background {
-  background: linear-gradient(
-      135deg,
-      #0f2027 0%,    /* very dark blue */
-      #203a43 30%,   /* medium dark blue */
-      #2c5364 60%,   /* steel blue */
-      #4a7587 90%    /* lighter blue */
-  );
   min-height: 100vh;
+  background:
+      radial-gradient(circle at 30% 40%, rgba(50, 119, 245, 0.5), transparent 90%),
+      radial-gradient(circle at 70% 60%, rgba(180, 240, 230, 0.4), transparent 90%);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
+
 </style>
+
+
+

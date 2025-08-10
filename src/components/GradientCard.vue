@@ -17,7 +17,12 @@ import { ref } from "vue";
       var(--color-background-gradient-end)
   );
   border-radius: var(--border-radius-card);
-  box-shadow: var(--shadow-light), var(--shadow-medium);
+  //box-shadow: var(--shadow-light), var(--shadow-medium);
+  box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.15),
+      0 12px 32px rgba(0, 0, 0, 0.25);
+
+
   padding: var(--spacing-card-padding-vertical) var(--spacing-card-padding-horizontal);
   margin: 2rem;
   color: var(--color-text-main);

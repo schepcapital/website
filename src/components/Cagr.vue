@@ -5,7 +5,6 @@ import { TRANSACTION_COST_NOTE } from '../constants'
 defineProps<{
   cagrBefore: number | null
   cagrAfter: number | null
-  note: string | null
 }>()
 </script>
 

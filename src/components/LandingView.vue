@@ -55,7 +55,7 @@ onMounted(async () => {
   <div class="fullscreen-bg">
     <SchepCapital />
     <video autoplay muted loop playsinline class="background-video">
-      <source src="../assets/short_wave.webm" type="video/webm" />
+      <source src="../assets/repeat_wave.webm" type="video/webm" />
       Your browser does not support the video tag.
     </video>
 
@@ -72,21 +72,6 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-@keyframes fadeLoop {
-  0% {
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 .fullscreen-bg {
   position: relative;
   height: 100vh;
