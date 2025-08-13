@@ -36,24 +36,21 @@ const chartOptions = ref({
   maintainAspectRatio: false,
   plugins: {
     legend: { position: 'top' },
-    title: { display: true, text: 'USDT Monthly Returns (June 2024 to Present)' },
+    title: { display: true, text: 'USD Monthly Returns (Since June 2024)' },
   },
   scales: {
     x: {
       ticks: {
         callback: function(value, index, ticks) {
-          if (window.innerWidth <= 480) {
-            if (index === 0 || index === ticks.length - 1) {
-              return this.getLabelForValue(value);
-            }
-            return '';
-          } else {
+          // Always show only first and last label
+          if (index === 0 || index === ticks.length - 1) {
             return this.getLabelForValue(value);
           }
+          return '';
         },
-        maxRotation: window.innerWidth > 480 ? 45 : 0,
-        minRotation: window.innerWidth > 480 ? 45 : 0,
-        autoSkip: false,
+        maxRotation: 0, // always horizontal
+        minRotation: 0,
+        autoSkip: false, // ensure Chart.js doesn't skip the last one
       }
     },
     y: {
@@ -65,6 +62,7 @@ const chartOptions = ref({
     }
   }
 })
+
 
 onMounted(async () => {
   const res = await fetch('/data.json')

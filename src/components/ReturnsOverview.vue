@@ -2,13 +2,14 @@
 import { computed } from 'vue'
 import Table from "./Table.vue"
 import GradientCard from "./GradientCard.vue"
+import { TRANSACTION_COST_NOTE } from '../constants.ts'
 
 const props = defineProps<{
   metric: 'usdt' | 'btc'
 }>()
 
 const metricLabel = computed(() => {
-  return props.metric === 'btc' ? 'Bitcoin' : 'USDT'
+  return props.metric === 'btc' ? 'Bitcoin' : 'USD'
 })
 </script>
 
@@ -19,7 +20,12 @@ const metricLabel = computed(() => {
     </h2>
     <div class="table-with-text">
       <div class="table-container">
-        <Table :metric="props.metric" />
+        <div class="table-wrapper">
+          <Table :metric="props.metric" />
+        </div>
+        <p>
+          {{ TRANSACTION_COST_NOTE}}
+        </p>
       </div>
       <div class="description">
         <slot />
@@ -31,12 +37,18 @@ const metricLabel = computed(() => {
 
 <style scoped>
 .table-container {
-  display: flex;        /* use flexbox */
-  align-items: center;  /* vertical centering */
-  justify-content: center; /* horizontal alignment to left */
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* center horizontally */
+  justify-content: center; /* center vertically inside container */
   margin: 0;
+  padding-bottom: 0;
 }
 
+.table-wrapper {
+  overflow-x: auto; /* horizontal scroll for table only */
+  max-width: 100%;
+}
 
 
 .table-with-text {
@@ -45,7 +57,7 @@ const metricLabel = computed(() => {
 }
 
 .table-with-text > .table-container {
-  padding: 3rem;
+  padding: 3rem 3rem 0;
   flex: 1; /* take remaining space */
   min-width: 0; /* prevents overflow issues */
 }
