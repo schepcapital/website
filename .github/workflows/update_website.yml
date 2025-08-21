@@ -27,9 +27,10 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
+          personal_token: ${{ secrets.GH_PAT }}
+          external_repository: orga91/company.github.io
+          publish_branch: main
           publish_dir: ./dist
-          publish_branch: main  # branch in the destination repo
-          external_repository: schepcapital/schepcapital.github.io
-          github_token: ${{ secrets.GH_PAT }}
+
 
     
