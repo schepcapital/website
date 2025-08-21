@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar">
     <span class="brand-name">Schep Capital</span>
-    <img src="../assets/logo.webp" alt="Logo" class="logo-image" />
+    <img src="../assets/logo.webp" alt="Logo" class="logo-image"
+         width="40"
+         height="40" />
   </nav>
 </template>
 
@@ -34,8 +36,9 @@
 
 
 .logo-image {
-  height: 40px;          /* Adjust logo height here */
   width: auto;
   object-fit: contain;
+  display: block;     /* removes inline image whitespace */
 }
+
 </style>

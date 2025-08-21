@@ -1,6 +1,6 @@
 <script setup lang="ts">
 function handleClick() {
-  window.open('https://your-google-form-link.com', '_blank')
+  window.open('https://forms.gle/SzNUFFrFCEB64NDF7', '_blank')
 }
 </script>
 
