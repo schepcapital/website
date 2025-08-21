@@ -62,15 +62,20 @@ function showValue(months: YearlyData, month: string, index: number): string {
 }
 
 
-function getCellClass(val: number | undefined, months: YearlyData, month: string, index: number): string {
+function getCellClass(val: number | undefined, months: YearlyData, index: number): string {
   const keysBefore = allMonths.slice(0, index);
   const hasAnyBefore = keysBefore.some(k => months[k]?.[props.metric] !== undefined);
+
   if (val === undefined && !hasAnyBefore) return '';
   if (val === undefined && hasAnyBefore) return 'unknown';
-  if (val > 0) return 'bg-positive';
-  if (val < 0) return 'bg-negative';
+
+  // TypeScript now knows val is a number
+  if (val !== undefined && val > 0) return 'bg-positive';
+  if (val !== undefined && val < 0) return 'bg-negative';
+
   return '';
 }
+
 
 </script>
 
@@ -92,7 +97,7 @@ function getCellClass(val: number | undefined, months: YearlyData, month: string
             v-for="(month, index) in allMonths"
             :key="month"
             :class="[
-            getCellClass(months[month]?.[props.metric], months, month, index)
+            getCellClass(months[month]?.[props.metric], months, index)
           ]"
         >
           {{ showValue(months, month, index) }}
