@@ -1,9 +1,10 @@
 name: Deploy to GitHub Pages
 
 on:
-  workflow_dispatch:   # manual trigger
   schedule:
-    - cron: '0 0,8,16 1,2,3 * *'  # 3 times per day on 1st, 2nd, 3rd
+    # Every 4 hours (0, 4, 8, 12, 16, 20) on the 1st day of the month
+    - cron: '0 1,5,9,13,17,21 1 * *'
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
