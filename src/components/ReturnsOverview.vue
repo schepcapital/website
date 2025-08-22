@@ -16,7 +16,7 @@ const metricLabel = computed(() => {
 <template>
   <GradientCard>
     <h2 class="slogan">
-      Historical returns in terms of <span class="highlight">{{ metricLabel }}</span>
+      Historical returns in <span class="highlight">{{ metricLabel }}</span>
     </h2>
     <div class="table-with-text">
       <div class="table-container">
