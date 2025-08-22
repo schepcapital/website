@@ -10,9 +10,9 @@ import Button from "./Button.vue";
     Show your <span class="highlight">interest</span>
   </h1>
   <p class="description">
-    Click the button below to access a <strong>private Google Form</strong> where you can express your interest in joining the fund.
+    Click the button below to access a private Google Form where you can express your interest in joining the fund.
     Completing the form does <strong>not commit you</strong> and also does <strong>not guarantee</strong> you a possible spot into the fund.
-    Your interest is greatly valued, and I look forward to the possibility of welcoming you into this <strong>select circle</strong>.
+    Your interest is greatly valued, and I look forward to the possibility of welcoming you into this select circle.
   </p>
 
   <Button></Button>

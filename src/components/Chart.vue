@@ -93,7 +93,7 @@ onMounted(async () => {
     }
   }
 
-  const initialAmount = 10000
+  const initialAmount = 100000
   const accumulate = (returns) => {
     const result = []
     let current = initialAmount

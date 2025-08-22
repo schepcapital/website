@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import photo from '../assets/photo.jpg'
+import photo from '../assets/photo2.jpg'
 import GradientCard from './GradientCard.vue'
 </script>
 
@@ -10,7 +10,9 @@ import GradientCard from './GradientCard.vue'
         <h1 class="slogan">Meet the <span class="highlight">founder</span></h1>
 
         <div class="profile">
-          <img :src="photo" alt="Reinier Schep" class="photo" />
+          <div class="photo-wrapper">
+            <img :src="photo" alt="Reinier Schep" class="photo" />
+          </div>
           <div class="info">
             <h2 class="name">Reinier Schep</h2>
             <p class="title">Founder of <strong>Schep Capital</strong></p>
@@ -56,14 +58,23 @@ import GradientCard from './GradientCard.vue'
   flex-wrap: wrap;
   text-align: left;
 }
-
-.photo {
+.photo-wrapper {
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  object-fit: cover;
   border: 3px solid white;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  overflow: hidden;           /* ensures zoomed image stays inside circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.3);
 }
 
 /* On small screens (mobile) */

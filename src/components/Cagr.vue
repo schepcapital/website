@@ -11,8 +11,8 @@ defineProps<{
 <template>
   <GradientCard>
     <h1 class="slogan">
-      <span class="highlight">Complex</span> financial markets,<br />
-      navigated <span class="highlight">simply</span>
+      Turning insight
+      into <span class="highlight">growth</span>
     </h1>
 
     <h2 class="cagr-value" v-if="cagrAfter !== null">{{ `CAGR: ${cagrAfter}%` }}*</h2>
