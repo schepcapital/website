@@ -1,9 +1,9 @@
 name: Deploy Vue3 + Vite to GitHub Pages
 
 on:
-  push:
-    branches:
-      - main
+#  push:
+#    branches:
+#      - main
   workflow_dispatch:  # enables manual trigger
 
 permissions:
