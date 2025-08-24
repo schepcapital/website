@@ -3,7 +3,7 @@ name: Deploy Vue3 app to GitHub Pages
 on:
   push:
     branches:
-      - main  # Trigger on pushes to main branch
+      - main
 
 permissions:
   contents: read
@@ -33,9 +33,9 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # 5. Upload built site as artifact
+      # 5. Upload built site as Pages artifact
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v2
         with:
           path: ./dist
 
