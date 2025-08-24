@@ -90,7 +90,7 @@ onMounted(async () => {
 .fullscreen-bg {
   position: relative;
   height: calc(var(--vh, 1vh) * 100);
-  width: 99.9vw;
+  width: 100vw;
   overflow: hidden;
 }
 

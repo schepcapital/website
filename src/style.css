@@ -26,6 +26,8 @@
     /* 🌫 Shadows */
     --shadow-light: 0 4px 12px var(--color-shadow-light);
     --shadow-medium: 0 8px 24px var(--color-shadow-medium);
+
+    --vh: 1vh;
 }
 
 
