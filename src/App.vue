@@ -42,7 +42,7 @@ onMounted(async () => {
     <EquityCurve></EquityCurve>
     <ReturnsOverview metric="usdt">
       <p>
-        This table presents the historical returns in <strong>USD</strong>,
+        This table presents all the historical returns in <strong>USD</strong>,
         both back-tested and real world results.
         <br><br>
         The strategy was deployed in the real world at the beginning of June 2024.
