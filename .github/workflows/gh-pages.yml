@@ -1,4 +1,4 @@
-name: Deploy Vue3 + Vite to GitHub Pages
+name: Deploy to gh-pages
 
 on:
   push:
