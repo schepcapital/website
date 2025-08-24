@@ -23,8 +23,9 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      # Upload the built static site
-      - uses: actions/upload-pages-artifact@v2
+      # Upload artifact using v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./dist
 
@@ -32,6 +33,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/deploy-pages@v1
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
         with:
           cname: schepcapital.com
