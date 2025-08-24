@@ -64,10 +64,10 @@ onMounted(async () => {
         <br><br>
 
         The strategy is built on the <strong>core belief</strong> that accumulating more Bitcoin over time is a powerful path to
-        long-term wealth. The strategy involves <strong>increasing Bitcoin holdings</strong> by trading other cryptocurrencies
+        long-term wealth. The strategy involves increasing Bitcoin holdings by trading other cryptocurrencies
         <br><br>
         Combining increased Bitcoin holdings with a rise in Bitcoin's USD price results in <strong>exponential
-        growth</strong> during bull markets and helps <strong>mitigate losses</strong> during bear markets.
+        growth</strong> during bull markets and helps mitigate losses during bear markets.
 
 <!--        Over the long run, this approach significantly outperforms <strong>traditional</strong> investment methods.-->
       </p>

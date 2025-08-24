@@ -105,6 +105,7 @@ onMounted(async () => {
   transform: translate(-50%, -50%);
   object-fit: cover;
   z-index: -2;
+  background: black;
 }
 
 .overlay {
