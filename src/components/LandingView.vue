@@ -89,7 +89,7 @@ onMounted(async () => {
 <style scoped>
 .fullscreen-bg {
   position: relative;
-  height: calc(var(--vh, 1vh) * 100);
+  height: calc(var(--vh, 1vh) * 110);
   width: 100vw;
   overflow: hidden;
 }
@@ -99,7 +99,7 @@ onMounted(async () => {
   top: 50%;
   left: 50%;
   min-width: 100%;
-  min-height: 100%;
+  min-height: 110%;
   width: auto;
   height: auto;
   transform: translate(-50%, -50%);
@@ -113,7 +113,7 @@ onMounted(async () => {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 120%;
   background: rgba(0, 0, 0, 0.4);
   z-index: -1;
 }
@@ -130,6 +130,7 @@ onMounted(async () => {
   height: 100%;
   text-align: center;
   padding: 2rem 1rem;
+  padding: 0;
 }
 
 .branding {

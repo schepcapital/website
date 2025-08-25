@@ -67,10 +67,8 @@ thead th {
 
 tbody td {
   padding: 0.6rem 0.75rem;
-  background: white;
-  box-shadow: 0 1px 3px rgb(0 0 0 / 0.05);
-  border-radius: 6px;
 }
+
 
 tbody tr td:first-child {
   font-weight: 600;
