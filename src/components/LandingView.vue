@@ -129,7 +129,6 @@ onMounted(async () => {
   justify-content: center;
   height: 100%;
   text-align: center;
-  padding: 2rem 1rem;
   padding: 0;
 }
 
@@ -143,7 +142,7 @@ onMounted(async () => {
 .slogan {
   font-size: clamp(2rem, 6vw, 5rem);
   font-weight: bold;
-  margin-bottom: 0.1vh;
+  margin-bottom: 7vh;
 }
 
 .cagr {
@@ -155,6 +154,7 @@ onMounted(async () => {
 .note {
   font-size: clamp(0.8rem, 2vw, 1rem);
   opacity: 0.7;
+  padding: 3rem;
 }
 
 </style>
