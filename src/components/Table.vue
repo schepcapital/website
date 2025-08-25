@@ -86,7 +86,7 @@ function getCellClass(val: number | undefined, months: YearlyData, index: number
       <tr>
         <th>Year</th>
         <th v-for="month in allMonths" :key="month">
-          {{ month.slice(0, 3).toUpperCase() }}
+          {{ month === 'total' ? 'ANNUAL' : month.slice(0, 3).toUpperCase() }}
         </th>
       </tr>
       </thead>
@@ -123,7 +123,8 @@ function getCellClass(val: number | undefined, months: YearlyData, index: number
 }
 
 .table-wrapper {
-  overflow: auto;
+  overflow-x: scroll; /* always show horizontal scrollbar */
+  overflow-y: auto;   /* vertical scrollbar only if needed */
   max-height: 80vh;
 }
 
