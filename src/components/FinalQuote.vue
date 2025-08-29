@@ -16,8 +16,9 @@ import GradientCard from "./GradientCard.vue";
       If you're interested in potentially participating, I’ve created a Google Form where you can <strong>express interest</strong> and leave your contact details.
       Should spots open up, I’ll reach out to those who have submitted. <br><br>
 
-      Please leave your email in the form. I’ll send the slide deck to investors committing <strong>a minimum of $100,000</strong> to the fund.
+      Please leave your email in the form. I’ll send the slide deck to investors who are considering committing <strong>a minimum of $100,000</strong> to the fund.
       The deck provides a detailed overview of the strategy, the key risks, and the measures in place to mitigate them.
+      Please note that only submissions including a credible source of wealth will be considered.
     </p>
 
 
