@@ -8,6 +8,7 @@ import ReturnsOverview from './components/ReturnsOverview.vue'
 import FinalQuote from './components/FinalQuote.vue'
 import ShowInterest from './components/ShowInterest.vue'
 import LandingView from './components/LandingView.vue'
+import Disclaimer from "./components/Disclaimer.vue";
 
 interface Stats {
   'cagr_usdt_before_june2024_%': number
@@ -80,7 +81,7 @@ onMounted(async () => {
       <FinalQuote></FinalQuote>
       <ShowInterest></ShowInterest>
     </div>
-
+    <Disclaimer></Disclaimer>
   </div>
 </template>
 
