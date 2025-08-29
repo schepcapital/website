@@ -12,7 +12,10 @@ import Button from "./Button.vue";
   <p class="description">
     Click the button below to access a private Google Form where you can express your interest in joining the fund.
     Completing the form does <strong>not commit you</strong> and also does <strong>not guarantee</strong> you a possible spot into the fund.
-    Your interest is greatly valued, and I look forward to the possibility of welcoming you into this select circle.
+    Your interest is greatly valued, and I look forward to the possibility of welcoming you into this select circle. <br><br>
+
+    Investors committing <strong>a minimum of $100,000</strong> will receive a detailed slide deck outlining the strategy and associated risks.
+    We only engage with individuals who can demonstrate a credible source of wealth.
   </p>
 
   <Button></Button>

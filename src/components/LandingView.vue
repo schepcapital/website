@@ -80,7 +80,7 @@ onMounted(async () => {
       <div class="branding">
         <h1 class="slogan">Private wealth, <br /> built for you</h1>
       </div>
-      <p class="cagr">CAGR: {{ displayValue }}%*</p>
+      <p class="cagr">Annualized return: {{ displayValue }}%*</p>
       <p class="note">{{ TRANSACTION_COST_NOTE }}</p>
     </div>
   </div>
@@ -90,6 +90,7 @@ onMounted(async () => {
 .fullscreen-bg {
   position: relative;
   height: calc(var(--vh, 1vh) * 110);
+  min-height: 500px;
   width: 100vw;
   overflow: hidden;
 }
@@ -154,7 +155,7 @@ onMounted(async () => {
 .note {
   font-size: clamp(0.8rem, 2vw, 1rem);
   opacity: 0.7;
-  padding: 3rem;
+  padding: 0 3rem; /* 0 top bottom, 6rem left and right */
 }
 
 </style>

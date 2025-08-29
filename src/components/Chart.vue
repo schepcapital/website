@@ -24,6 +24,17 @@ ChartJS.register(
     Filler
 )
 
+const accumulate = (returns) => {
+  const result = []
+  let current = initialAmount
+  for (const r of returns) {
+    current *= (1 + r / 100)   // keep full precision
+    result.push(current)       // push number, not string
+  }
+  return result
+}
+
+
 const chartRef = ref(null)
 
 const chartData = ref({
@@ -56,7 +67,7 @@ const chartOptions = ref({
     y: {
       ticks: {
         callback: function(value) {
-          return '$' + value.toLocaleString();
+          return '$' + Number(value).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
         }
       }
     }
