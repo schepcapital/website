@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted} from 'vue'
 import SchepCapital from '../components/SchepCapital.vue'
-import { TRANSACTION_COST_NOTE } from '../constants'
 
 function setVh() {
   const vh = window.innerHeight * 0.01
@@ -157,10 +156,6 @@ onMounted(async () => {
   font-size: clamp(0.8rem, 2vw, 1rem);
   opacity: 0.7;
   padding: 0 3rem; /* 0 top bottom, 6rem left and right */
-}
-
-p {
-  margin: 10;
 }
 
 </style>

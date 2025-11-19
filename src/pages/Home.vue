@@ -3,12 +3,8 @@ import { ref, onMounted } from 'vue'
 
 import Founder from '../components/Founder.vue'
 import CagrStripped from '../stripped_components/CagrStripped.vue'
-import EquityCurve from '../components/EquityCurve.vue'
-import ReturnsOverview from '../components/ReturnsOverview.vue'
-import FinalQuote from '../components/FinalQuote.vue'
 import ShowInterestStripped from '../stripped_components/ShowInterestStripped.vue'
 import LandingViewStripped from '../stripped_components/LandingViewStripped.vue'
-import Disclaimer from "../components/Disclaimer.vue";
 import Wealth from "../stripped_components/Wealth.vue";
 
 interface Stats {

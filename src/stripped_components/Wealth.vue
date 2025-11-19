@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import GradientCard from '../components/GradientCard.vue'
-import { TRANSACTION_COST_NOTE } from '../constants'
 
 defineProps<{
   cagrBefore: number | null
