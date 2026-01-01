@@ -1,12 +1,12 @@
 {
-    "sortino_btc_june2024": 1.5101,
-    "sterling_btc_june2024": 0.338,
-    "sortino_usdt_june2024": 2.3203,
-    "sterling_usdt_june2024": 0.4438,
-    "sortino_sp500_june2024": 0.6421,
-    "sterling_sp500_june2024": 0.1715,
+    "sortino_btc_june2024": 1.4116,
+    "sterling_btc_june2024": 0.3123,
+    "sortino_usdt_june2024": 2.1632,
+    "sterling_usdt_june2024": 0.4128,
+    "sortino_sp500_june2024": 0.6205,
+    "sterling_sp500_june2024": 0.161,
     "cagr_usdt_before_june2024_%": 66.04,
-    "cagr_usdt_after_june2024_%": 118.02,
+    "cagr_usdt_after_june2024_%": 104.97,
     "cagr_btc_before_june2024_%": 70.27,
-    "cagr_btc_after_june2024_%": 85.3
+    "cagr_btc_after_june2024_%": 75.65
 }
