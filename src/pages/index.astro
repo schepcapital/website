@@ -1,0 +1,324 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import logo from '../assets/logo.webp';
+import portrait from '../assets/photo.jpg';
+
+const email = 'reinier@schepcapital.com';
+const year = 2026;
+
+const strategies = [
+  {
+    name: 'Momentum Global Equity Fund',
+    status: 'GOES LIVE JUL 6, 2026',
+    liveDate: 'JUL 6',
+    blurb:
+      'A global, long-only equity strategy offered in three risk variants, rebalanced monthly to track momentum across the globe. The same core signal drives every variant; what changes is how much Commodities and FX exposure is layered in to soften drawdowns, trading away long-term upside for a smoother ride.',
+    variants: [
+      {
+        name: 'Offensive',
+        dot: '#0d9488',
+        desc: '100% equity. Highest long-term return; outperforms the market in good years, but takes drawdowns equal to the market.',
+        btSharpe: '1.38',
+        btSortino: '1.97',
+      },
+      {
+        name: 'Neutral',
+        dot: '#6366f1',
+        desc: 'Adds Commodities and FX to reduce drawdowns. Smoother than Offensive, with lower long-term gains.',
+        btSharpe: '1.51',
+        btSortino: '2.14',
+      },
+      {
+        name: 'Defensive',
+        dot: '#94a3b8',
+        desc: 'Leans even harder on Commodities and FX to minimize drawdowns; the calmest ride, with the lowest long-term gains.',
+        btSharpe: '1.29',
+        btSortino: '1.88',
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <div
+    class="relative flex min-h-screen flex-col overflow-x-hidden bg-white md:h-screen md:overflow-hidden"
+  >
+    <!-- ambient background: faint grid + pulsing glow -->
+    <div
+      class="pointer-events-none absolute inset-0"
+      style="background-image:linear-gradient(rgba(12,15,18,.026) 1px,transparent 1px),linear-gradient(90deg,rgba(12,15,18,.026) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(closest-side at 50% 42%,#000,transparent 95%);mask-image:radial-gradient(closest-side at 50% 42%,#000,transparent 95%)"
+    >
+    </div>
+    <div
+      class="pointer-events-none absolute -top-[220px] left-1/2 h-[560px] w-[1000px] max-w-[140vw]"
+      style="background:radial-gradient(closest-side,#0d948814,transparent);animation:pulseglow 8s ease-in-out infinite"
+    >
+    </div>
+
+    <!-- nav -->
+    <header
+      class="relative z-10 flex flex-none items-center justify-between gap-4 px-6 py-5 md:px-11 md:py-6"
+    >
+      <button data-tab-link="home" class="flex cursor-pointer items-center gap-3">
+        <Image src={logo} alt="Schep Capital" loading="eager" class="h-8 w-auto" />
+        <span class="text-[15px] font-semibold tracking-wide sm:text-base">Schep Capital</span>
+      </button>
+      <nav class="flex items-center gap-5 sm:gap-6">
+        <button class="tab" data-tab="home" data-active="true">Home</button>
+        <button class="tab" data-tab="founder" data-active="false">Founder</button>
+      </nav>
+    </header>
+
+    <!-- ================= HOME ================= -->
+    <main
+      data-panel="home"
+      class="relative z-10 flex flex-1 flex-col items-center justify-start overflow-y-auto px-5 py-8 sm:px-6 md:justify-center md:px-11 md:py-6"
+    >
+      <!-- slogan -->
+      <div class="mb-7 max-w-[820px] text-center">
+        <h1
+          class="m-0 text-2xl font-semibold leading-[1.12] tracking-[-1.1px] text-[#0a0d10] sm:text-3xl"
+        >
+          Systematic strategies, at your service.
+        </h1>
+      </div>
+
+      <!-- strategies -->
+      <div class="flex w-full max-w-[1100px] flex-col gap-[22px]">
+        {
+          strategies.map((st) => (
+            <article class="overflow-hidden rounded-[18px] border border-[#e8eaed] bg-white shadow-[0_22px_60px_rgba(12,15,18,.06)]">
+              {/* header: name + status + blurb */}
+              <div class="flex flex-col items-start gap-5 border-b border-[#eef0f1] px-5 py-5 sm:gap-7 sm:px-[26px] sm:py-[22px] md:flex-row">
+                <div class="flex-none md:w-[230px]">
+                  <div class="flex items-center gap-[9px]">
+                    <span class="h-2 w-2 rotate-45 bg-accent" />
+                    <span class="text-[19px] font-semibold text-[#0a0d10]">{st.name}</span>
+                  </div>
+                  <div class="mt-3 inline-flex items-center gap-[7px] rounded-full border border-[#0d948833] bg-[#0d948814] px-[9px] py-1 font-mono text-[10px] tracking-[1px] text-accent">
+                    <span class="h-[5px] w-[5px] rounded-full bg-accent shadow-[0_0_6px_#0d9488]" />
+                    {st.status}
+                  </div>
+                </div>
+                <p class="m-0 flex-1 pt-0.5 text-sm leading-[1.55] text-[#5b636c]">{st.blurb}</p>
+              </div>
+
+              {/* ===== desktop table ===== */}
+              {/* column headers */}
+              <div class="hidden items-stretch border-b border-[#eef0f1] bg-[#fafbfc] font-mono text-[10px] tracking-[1.5px] text-[#aab0b6] md:flex">
+                <div class="flex flex-[3.4] items-center px-[26px] py-[11px]">VARIANT</div>
+                <div class="flex-[2] border-l border-[#eef0f1] py-[9px] text-center">
+                  <div class="text-[#9aa1a8]">BACKTESTED</div>
+                  <div class="mt-[6px] flex">
+                    <span class="flex-1">Sharpe</span>
+                    <span class="flex-1">Sortino</span>
+                  </div>
+                </div>
+                <div class="flex-[3.2] border-l border-[#e8eaed] bg-[#f4f8f7] py-[9px] text-center">
+                  <div class="text-accent">LIVE · FROM {st.liveDate}</div>
+                  <div class="mt-[6px] flex">
+                    <span class="flex-1">Sharpe</span>
+                    <span class="flex-1">Sortino</span>
+                    <span class="flex-[1.2]">Since incept.</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* desktop variant rows */}
+              {st.variants.map((v) => (
+                <div class="hidden items-stretch border-t border-[#f3f4f5] md:flex">
+                  <div class="flex min-w-0 flex-[3.4] items-start gap-3 px-[26px] py-4">
+                    <span
+                      class="mt-[5px] h-[9px] w-[9px] flex-none rounded-[2px]"
+                      style={`background:${v.dot}`}
+                    />
+                    <div class="min-w-0">
+                      <div class="text-[15px] font-semibold text-[#0a0d10]">{v.name}</div>
+                      <div class="mt-1 max-w-[330px] text-[12.5px] leading-[1.45] text-[#7b828a]">
+                        {v.desc}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-1 items-center justify-center border-l border-[#f0f1f3] py-4 text-center font-mono text-[22px] font-semibold text-[#0a0d10]">
+                    {v.btSharpe}
+                  </div>
+                  <div class="flex flex-1 items-center justify-center py-4 text-center font-mono text-[22px] font-semibold text-[#0a0d10]">
+                    {v.btSortino}
+                  </div>
+                  <div class="flex flex-1 items-center justify-center border-l border-[#e8eaed] bg-[#f4f8f7] py-4 text-center font-mono text-[22px] font-semibold text-[#c2c7cc]">
+                    —
+                  </div>
+                  <div class="flex flex-1 items-center justify-center bg-[#f4f8f7] py-4 text-center font-mono text-[22px] font-semibold text-[#c2c7cc]">
+                    —
+                  </div>
+                  <div class="flex flex-[1.2] items-center justify-center bg-[#f4f8f7] py-4 text-center font-mono text-[22px] font-semibold text-[#c2c7cc]">
+                    —
+                  </div>
+                </div>
+              ))}
+
+              {/* ===== mobile variant cards ===== */}
+              {st.variants.map((v) => (
+                <div class="border-t border-[#f3f4f5] px-5 py-5 md:hidden">
+                  <div class="flex items-start gap-3">
+                    <span
+                      class="mt-[6px] h-[9px] w-[9px] flex-none rounded-[2px]"
+                      style={`background:${v.dot}`}
+                    />
+                    <div class="min-w-0">
+                      <div class="text-base font-semibold text-[#0a0d10]">{v.name}</div>
+                      <div class="mt-1 text-[13px] leading-[1.5] text-[#7b828a]">{v.desc}</div>
+                    </div>
+                  </div>
+                  <div class="mt-4 grid grid-cols-2 gap-2.5">
+                    <div class="rounded-xl border border-[#eef0f1] bg-[#fafbfc] p-3 text-center">
+                      <div class="font-mono text-[9px] tracking-[1px] text-[#9aa1a8]">BACKTESTED</div>
+                      <div class="mt-2 flex">
+                        <div class="flex-1">
+                          <div class="font-mono text-[20px] font-semibold leading-none text-[#0a0d10]">
+                            {v.btSharpe}
+                          </div>
+                          <div class="mt-1 font-mono text-[9px] tracking-[1px] text-[#aab0b6]">
+                            SHARPE
+                          </div>
+                        </div>
+                        <div class="flex-1">
+                          <div class="font-mono text-[20px] font-semibold leading-none text-[#0a0d10]">
+                            {v.btSortino}
+                          </div>
+                          <div class="mt-1 font-mono text-[9px] tracking-[1px] text-[#aab0b6]">
+                            SORTINO
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col rounded-xl border border-[#e2ece9] bg-[#f4f8f7] p-3 text-center">
+                      <div class="font-mono text-[9px] tracking-[1px] text-accent">
+                        LIVE · FROM {st.liveDate}
+                      </div>
+                      <div class="flex flex-1 items-center justify-center">
+                        <span class="font-mono text-[11px] text-[#aab0b6]">Awaiting launch</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="mt-[18px] text-center font-mono text-[11px] leading-[1.6] text-[#aab0b6]">
+        Backtested over 2009 to 2025 · live figures begin reporting after launch
+      </div>
+    </main>
+
+    <!-- ================= FOUNDER ================= -->
+    <main
+      data-panel="founder"
+      class="relative z-10 hidden flex flex-1 flex-col items-center justify-start overflow-y-auto px-5 py-8 sm:px-6 md:justify-center md:px-11 md:py-6"
+    >
+      <div
+        class="flex w-full max-w-[940px] flex-col items-center gap-8 sm:items-start md:flex-row md:items-center md:gap-[60px]"
+      >
+        <!-- portrait -->
+        <Image
+          src={portrait}
+          alt="Reinier Schep"
+          loading="eager"
+          class="h-[360px] w-full max-w-[320px] flex-none rounded-2xl border border-[#e8eaed] object-cover object-center shadow-[0_22px_60px_rgba(12,15,18,.06)] sm:h-[400px]"
+        />
+
+        <!-- bio -->
+        <div class="min-w-0 flex-1">
+          <div class="mb-4 font-mono text-xs tracking-[2.5px] text-accent">FOUNDER</div>
+          <h1
+            class="m-0 mb-2 text-4xl font-semibold leading-[1.04] tracking-[-1.5px] text-[#0a0d10] sm:text-5xl sm:tracking-[-2px]"
+          >
+            Reinier Schep
+          </h1>
+          <div class="mb-7 text-base text-[#6b727a] sm:mb-[30px]">Founder &amp; Portfolio Manager</div>
+          <p class="m-0 mb-[22px] max-w-[480px] text-base leading-[1.6] text-[#3f4750] sm:text-lg">
+            Reinier founded Schep Capital to run institutional-grade systematic strategies with the
+            discipline of a researcher and the patience of a long-term investor. Every model is
+            built, backtested, and traded in-house.
+          </p>
+          <p class="m-0 mb-8 max-w-[480px] text-base leading-[1.6] text-[#3f4750] sm:mb-[34px] sm:text-lg">
+            Over a decade designing quantitative models across rates and equities, now compounded
+            into a focused, fully automated book.
+          </p>
+          <a
+            href={`mailto:${email}`}
+            class="inline-flex h-12 items-center rounded-[10px] bg-accent px-6 text-[15px] font-semibold text-white no-underline shadow-[0_6px_20px_#0d948833] transition-transform hover:-translate-y-px"
+            >Get in touch</a
+          >
+        </div>
+      </div>
+    </main>
+
+    <!-- footer -->
+    <footer
+      class="relative z-10 flex flex-none flex-col-reverse items-center justify-between gap-3 border-t border-[#eef0f1] px-6 py-4 sm:flex-row md:px-11"
+    >
+      <span class="font-mono text-[11px] tracking-[0.3px] text-[#aab0b6]"
+        >© {year} Schep Capital</span
+      >
+      <a
+        href={`mailto:${email}`}
+        class="inline-flex items-center gap-2 font-mono text-[13px] text-[#5b636c] transition-colors hover:text-accent"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+        </svg>
+        {email}
+      </a>
+    </footer>
+  </div>
+</Layout>
+
+<style>
+  .tab {
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0 0 3px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: #8a9097;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s;
+  }
+  .tab[data-active='true'] {
+    color: #0a0d10;
+    border-bottom-color: #0d9488;
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLElement>('[data-tab]');
+  const links = document.querySelectorAll<HTMLElement>('[data-tab-link]');
+  const panels = document.querySelectorAll<HTMLElement>('[data-panel]');
+
+  function activate(tab: string) {
+    buttons.forEach((b) => (b.dataset.active = String(b.dataset.tab === tab)));
+    panels.forEach((p) => p.classList.toggle('hidden', p.dataset.panel !== tab));
+  }
+
+  buttons.forEach((b) => b.addEventListener('click', () => activate(b.dataset.tab || 'home')));
+  links.forEach((l) => l.addEventListener('click', () => activate(l.dataset.tabLink || 'home')));
+</script>
