@@ -39,6 +39,35 @@ const strategies = [
     ],
   },
 ];
+
+const roadmap = [
+  {
+    phase: 'NOW',
+    title: 'Launch',
+    current: true,
+    desc: 'Momentum Global Equity goes live in three risk variants, running in production from July 6, 2026.',
+  },
+  {
+    phase: 'NEXT',
+    title: 'More asset classes',
+    desc: 'Extend the strategy across more equity markets, then into other asset classes — commodities, FX, and crypto.',
+  },
+  {
+    phase: 'THEN',
+    title: 'Long and short',
+    desc: 'Move beyond long-only into long/short, isolating the signal from market direction for a more market-neutral return.',
+  },
+  {
+    phase: 'LATER',
+    title: 'More signals',
+    desc: 'Diversify beyond momentum into additional, complementary return signals, combined into a single, more robust book.',
+  },
+  {
+    phase: 'VISION',
+    title: 'Multi-strategy fund',
+    desc: 'A diversified, risk-balanced book spanning asset classes, signals, and both directions.',
+  },
+];
 ---
 
 <Layout>
@@ -67,6 +96,7 @@ const strategies = [
       </button>
       <nav class="flex items-center gap-5 sm:gap-6">
         <button class="tab" data-tab="home" data-active="true">Home</button>
+        <button class="tab" data-tab="roadmap" data-active="false">Roadmap</button>
         <button class="tab" data-tab="founder" data-active="false">Founder</button>
       </nav>
     </header>
@@ -81,7 +111,7 @@ const strategies = [
         <h1
           class="m-0 text-2xl font-semibold leading-[1.12] tracking-[-1.1px] text-[#0a0d10] sm:text-3xl"
         >
-          Systematic strategies, at your service.
+          Systematic strategies, built to last.
         </h1>
       </div>
 
@@ -211,7 +241,58 @@ const strategies = [
       </div>
 
       <div class="mt-[18px] text-center font-mono text-[11px] leading-[1.6] text-[#aab0b6]">
-        Backtested over 2009 to 2025 · live figures begin reporting after launch
+        Backtested over 2002 to 2026 · live figures begin reporting after launch
+      </div>
+    </main>
+
+    <!-- ================= ROADMAP ================= -->
+    <main
+      data-panel="roadmap"
+      class="relative z-10 hidden flex flex-1 flex-col items-center justify-start overflow-y-auto px-5 py-8 sm:px-6 md:justify-center md:px-11 md:py-4"
+    >
+      <div class="w-full max-w-[680px]">
+        <div class="mb-2 font-mono text-xs tracking-[2.5px] text-accent">RESEARCH DIRECTION</div>
+        <h2
+          class="m-0 mb-2 text-2xl font-semibold leading-[1.1] tracking-[-0.8px] text-[#0a0d10] sm:text-3xl"
+        >
+          Where Schep Capital is heading
+        </h2>
+        <p class="m-0 mb-4 max-w-[560px] text-sm leading-[1.55] text-[#5b636c]">
+          The goal is to span more of the market over time — more asset classes, more signals, more ways to find alpha that others miss.
+        </p>
+
+        <ol class="m-0 list-none p-0">
+          {
+            roadmap.map((p, i) => (
+              <li class="flex gap-5 sm:gap-6">
+                {/* rail: dot + connecting line */}
+                <div class="flex flex-none flex-col items-center pt-[3px]">
+                  {p.current ? (
+                    <span class="h-3 w-3 flex-none rounded-full bg-accent shadow-[0_0_0_4px_#0d948814]" />
+                  ) : (
+                    <span class="h-3 w-3 flex-none rounded-full border-2 border-[#cfd4d8] bg-white" />
+                  )}
+                  {i < roadmap.length - 1 && <span class="my-1 w-px flex-1 bg-[#e3e6e9]" />}
+                </div>
+                {/* content */}
+                <div class={i < roadmap.length - 1 ? 'pb-3' : ''}>
+                  <div class="flex items-center gap-2">
+                    <span class="font-mono text-[10px] tracking-[1.5px] text-accent">{p.phase}</span>
+                    {p.current && (
+                      <span class="rounded-full border border-[#0d948833] bg-[#0d948814] px-2 py-[2px] font-mono text-[9px] tracking-[1px] text-accent">
+                        LIVE JUL 6
+                      </span>
+                    )}
+                  </div>
+                  <div class="mt-1 text-[17px] font-semibold text-[#0a0d10]">{p.title}</div>
+                  <p class="m-0 mt-1 max-w-[480px] text-sm leading-[1.5] text-[#5b636c]">
+                    {p.desc}
+                  </p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
       </div>
     </main>
 
@@ -241,13 +322,12 @@ const strategies = [
           </h1>
           <div class="mb-7 text-base text-[#6b727a] sm:mb-[30px]">Founder &amp; Portfolio Manager</div>
           <p class="m-0 mb-[22px] max-w-[480px] text-base leading-[1.6] text-[#3f4750] sm:text-lg">
-            Reinier founded Schep Capital to run institutional-grade systematic strategies with the
-            discipline of a researcher and the patience of a long-term investor. Every model is
-            built, backtested, and traded in-house.
+            Reinier founded Schep Capital to run systematic strategies using creative ideas to extract alpha from the markets. The moat is thinking of things no-one thinks of.
           </p>
-          <p class="m-0 mb-8 max-w-[480px] text-base leading-[1.6] text-[#3f4750] sm:mb-[34px] sm:text-lg">
-            Over a decade designing quantitative models across rates and equities, now compounded
-            into a focused, fully automated book.
+          <p class="m-0 mb-[22px] max-w-[480px] text-base leading-[1.6] text-[#3f4750] sm:text-lg">
+            <span class="font-semibold text-[#0a0d10]">Ideas over infrastructure.</span> I don't
+            compete on speed, scale, or compute — those are fights won by capital, not insight. So my
+            strategies don't depend on any of them. The edge comes from combining readily available data in creative ways, and rigorously testing results. I try to make as few assumptions as possible — the fewer things that have to hold true, the more robust the strategy is when conditions change.
           </p>
           <a
             href={`mailto:${email}`}
