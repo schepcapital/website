@@ -13,7 +13,7 @@ const strategies = [
     status: 'GOES LIVE JUL 6, 2026',
     liveDate: 'JUL 6',
     blurb:
-      'A global, long-only equity strategy offered in three risk variants, rebalanced monthly to track momentum across the globe. The same core signal drives every variant; what changes is how much Commodities and FX exposure is layered in to soften drawdowns, trading away long-term upside for a smoother ride.',
+      'A global, long-only equity strategy I run in three risk variants, rebalanced monthly to track momentum across the globe. The same core signal drives every variant; what changes is how much Commodities and FX exposure is layered in to soften drawdowns, trading away long-term upside for a smoother ride.',
     variants: [
       {
         name: 'Offensive',
@@ -113,6 +113,9 @@ const roadmap = [
         >
           Systematic strategies, built to last.
         </h1>
+        <p class="m-0 mt-3 text-sm leading-[1.55] text-[#5b636c]">
+          A personal record of how I invest my own money, not open to outside capital.
+        </p>
       </div>
 
       <!-- strategies -->
@@ -340,8 +343,14 @@ const roadmap = [
 
     <!-- footer -->
     <footer
-      class="relative z-10 flex flex-none flex-col-reverse items-center justify-between gap-3 border-t border-[#eef0f1] px-6 py-4 sm:flex-row md:px-11"
+      class="relative z-10 flex flex-none flex-col gap-3 border-t border-[#eef0f1] px-6 py-4 md:px-11"
     >
+      <p class="m-0 max-w-[760px] text-center font-mono text-[10px] leading-[1.6] text-[#aab0b6] sm:text-left">
+        Schep Capital is a personal project documenting how I invest my own money. It offers no investment, advisory, or management services to anyone, does not accept outside
+        capital, and nothing here is investment advice or a solicitation. All figures are personal and
+        for illustration only.
+      </p>
+      <div class="flex flex-col-reverse items-center justify-between gap-3 sm:flex-row">
       <span class="font-mono text-[11px] tracking-[0.3px] text-[#aab0b6]"
         >© {year} Schep Capital</span
       >
@@ -366,6 +375,7 @@ const roadmap = [
         </svg>
         {email}
       </a>
+      </div>
     </footer>
   </div>
 </Layout>
