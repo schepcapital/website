@@ -13,28 +13,22 @@ const strategies = [
     status: 'GOES LIVE JUL 6, 2026',
     liveDate: 'JUL 6',
     blurb:
-      'A global, long-only equity strategy I run in three risk variants, rebalanced monthly to track momentum across the globe. The same core signal drives every variant; what changes is how much Commodities and FX exposure is layered in to soften drawdowns, trading away long-term upside for a smoother ride.',
+      'A global, long-only equity strategy I run in three risk variants, rebalanced monthly to track momentum across the globe. The same core signal drives every variant; what changes is to what extend other instruments are added in to soften drawdowns, trading away long-term upside for a smoother ride.',
     variants: [
       {
         name: 'Offensive',
         dot: '#0d9488',
         desc: '100% equity. Highest long-term return; outperforms the market in good years, but takes drawdowns equal to the market.',
-        btSharpe: '1.38',
-        btSortino: '1.97',
       },
       {
         name: 'Neutral',
         dot: '#6366f1',
-        desc: 'Adds Commodities and FX to reduce drawdowns. Smoother than Offensive, with lower long-term gains.',
-        btSharpe: '1.51',
-        btSortino: '2.14',
+        desc: '100% equity. Adds additional equity for more diversification to reduce drawdowns.',
       },
       {
         name: 'Defensive',
         dot: '#94a3b8',
-        desc: 'Leans even harder on Commodities and FX to minimize drawdowns; the calmest ride, with the lowest long-term gains.',
-        btSharpe: '1.29',
-        btSortino: '1.88',
+        desc: 'Equity combined with other asset classes to protect heavily against drawdowns.',
       },
     ],
   },
@@ -142,13 +136,6 @@ const roadmap = [
               {/* column headers */}
               <div class="hidden items-stretch border-b border-[#eef0f1] bg-[#fafbfc] font-mono text-[10px] tracking-[1.5px] text-[#aab0b6] md:flex">
                 <div class="flex flex-[3.4] items-center px-[26px] py-[11px]">VARIANT</div>
-                <div class="flex-[2] border-l border-[#eef0f1] py-[9px] text-center">
-                  <div class="text-[#9aa1a8]">BACKTESTED</div>
-                  <div class="mt-[6px] flex">
-                    <span class="flex-1">Sharpe</span>
-                    <span class="flex-1">Sortino</span>
-                  </div>
-                </div>
                 <div class="flex-[3.2] border-l border-[#e8eaed] bg-[#f4f8f7] py-[9px] text-center">
                   <div class="text-accent">LIVE · FROM {st.liveDate}</div>
                   <div class="mt-[6px] flex">
@@ -173,12 +160,6 @@ const roadmap = [
                         {v.desc}
                       </div>
                     </div>
-                  </div>
-                  <div class="flex flex-1 items-center justify-center border-l border-[#f0f1f3] py-4 text-center font-mono text-[22px] font-semibold text-[#0a0d10]">
-                    {v.btSharpe}
-                  </div>
-                  <div class="flex flex-1 items-center justify-center py-4 text-center font-mono text-[22px] font-semibold text-[#0a0d10]">
-                    {v.btSortino}
                   </div>
                   <div class="flex flex-1 items-center justify-center border-l border-[#e8eaed] bg-[#f4f8f7] py-4 text-center font-mono text-[22px] font-semibold text-[#c2c7cc]">
                     —
@@ -205,28 +186,7 @@ const roadmap = [
                       <div class="mt-1 text-[13px] leading-[1.5] text-[#7b828a]">{v.desc}</div>
                     </div>
                   </div>
-                  <div class="mt-4 grid grid-cols-2 gap-2.5">
-                    <div class="rounded-xl border border-[#eef0f1] bg-[#fafbfc] p-3 text-center">
-                      <div class="font-mono text-[9px] tracking-[1px] text-[#9aa1a8]">BACKTESTED</div>
-                      <div class="mt-2 flex">
-                        <div class="flex-1">
-                          <div class="font-mono text-[20px] font-semibold leading-none text-[#0a0d10]">
-                            {v.btSharpe}
-                          </div>
-                          <div class="mt-1 font-mono text-[9px] tracking-[1px] text-[#aab0b6]">
-                            SHARPE
-                          </div>
-                        </div>
-                        <div class="flex-1">
-                          <div class="font-mono text-[20px] font-semibold leading-none text-[#0a0d10]">
-                            {v.btSortino}
-                          </div>
-                          <div class="mt-1 font-mono text-[9px] tracking-[1px] text-[#aab0b6]">
-                            SORTINO
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="mt-4">
                     <div class="flex flex-col rounded-xl border border-[#e2ece9] bg-[#f4f8f7] p-3 text-center">
                       <div class="font-mono text-[9px] tracking-[1px] text-accent">
                         LIVE · FROM {st.liveDate}
@@ -244,7 +204,7 @@ const roadmap = [
       </div>
 
       <div class="mt-[18px] text-center font-mono text-[11px] leading-[1.6] text-[#aab0b6]">
-        Backtested over 2002 to 2026 · live figures begin reporting after launch
+        Live figures begin reporting after launch
       </div>
     </main>
 
