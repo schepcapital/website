@@ -9,26 +9,26 @@ const year = 2026;
 
 const strategies = [
   {
-    name: 'Momentum Global Equity Fund',
+    name: 'Global Equity Strategy',
     status: 'GOES LIVE JUL 6, 2026',
     liveDate: 'JUL 6',
     blurb:
-      'A global, long-only equity strategy I run in three risk variants, rebalanced monthly to track momentum across the globe. The same core signal drives every variant; what changes is to what extend other instruments are added in to soften drawdowns, trading away long-term upside for a smoother ride.',
+      'A global equity strategy offered in three risk variants. The same core approach drives each one; what changes is the balance between long-term growth and keeping drawdowns small.',
     variants: [
       {
         name: 'Offensive',
         dot: '#0d9488',
-        desc: '100% equity. Highest long-term return; outperforms the market in good years, but takes drawdowns equal to the market.',
+        desc: 'Built for the highest long-term growth, accepting larger drawdowns along the way.',
       },
       {
         name: 'Neutral',
         dot: '#6366f1',
-        desc: '100% equity. Adds additional equity for more diversification to reduce drawdowns.',
+        desc: 'A balanced approach between growth and stability.',
       },
       {
         name: 'Defensive',
         dot: '#94a3b8',
-        desc: 'Equity combined with other asset classes to protect heavily against drawdowns.',
+        desc: 'Prioritizes stability, keeping drawdowns to a minimum.',
       },
     ],
   },
@@ -39,7 +39,7 @@ const roadmap = [
     phase: 'NOW',
     title: 'Launch',
     current: true,
-    desc: 'Momentum Global Equity goes live in three risk variants, running in production from July 6, 2026.',
+    desc: 'Global Equity Strategy goes live in three risk variants, running in production from July 6, 2026.',
   },
   {
     phase: 'NEXT',
@@ -139,9 +139,7 @@ const roadmap = [
                 <div class="flex-[3.2] border-l border-[#e8eaed] bg-[#f4f8f7] py-[9px] text-center">
                   <div class="text-accent">LIVE · FROM {st.liveDate}</div>
                   <div class="mt-[6px] flex">
-                    <span class="flex-1">Sharpe</span>
-                    <span class="flex-1">Sortino</span>
-                    <span class="flex-[1.2]">Since incept.</span>
+                    <span class="flex-1">Since inception</span>
                   </div>
                 </div>
               </div>
@@ -161,13 +159,7 @@ const roadmap = [
                       </div>
                     </div>
                   </div>
-                  <div class="flex flex-1 items-center justify-center border-l border-[#e8eaed] bg-[#f4f8f7] py-4 text-center font-mono text-[22px] font-semibold text-[#c2c7cc]">
-                    —
-                  </div>
-                  <div class="flex flex-1 items-center justify-center bg-[#f4f8f7] py-4 text-center font-mono text-[22px] font-semibold text-[#c2c7cc]">
-                    —
-                  </div>
-                  <div class="flex flex-[1.2] items-center justify-center bg-[#f4f8f7] py-4 text-center font-mono text-[22px] font-semibold text-[#c2c7cc]">
+                  <div class="flex flex-[3.2] items-center justify-center border-l border-[#e8eaed] bg-[#f4f8f7] py-4 text-center font-mono text-[22px] font-semibold text-[#c2c7cc]">
                     —
                   </div>
                 </div>
