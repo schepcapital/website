@@ -1,11 +1,12 @@
 ---
 interface Props {
   href: string;
+  newTab?: boolean;
   variant?: 'primary' | 'secondary';
   class?: string;
 }
 
-const { href, variant = 'secondary', class: className } = Astro.props;
+const { href, newTab = false, variant = 'secondary', class: className } = Astro.props;
 const variants = {
   primary:
     'text-on-accent bg-linear-to-b from-accent to-accent-hover ' +
@@ -21,6 +22,8 @@ const variants = {
 
 <a
   {href}
+  target={newTab ? '_blank' : undefined}
+  rel={newTab ? 'noopener noreferrer' : undefined}
   class:list={[
     'relative inline-flex min-h-11 w-full select-none items-center justify-center gap-1.5 text-center sm:w-auto rounded-[var(--radius-control)] px-4 py-2 text-base font-medium transition-[background-color,box-shadow,transform,color,filter] duration-[var(--dur-instant)] ease-[var(--ease-out)] active:translate-y-[0.5px]',
     variants[variant],
@@ -28,4 +31,5 @@ const variants = {
   ]}
 >
   <slot />
+  {newTab && <span class="sr-only"> (opens in a new tab)</span>}
 </a>

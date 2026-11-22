@@ -235,7 +235,7 @@
     );
   }
 
-  /* Panel.astro sets the origin from the cursor or the last tap. */
+  /* Panel.astro sets the origin from the cursor. */
   .spotlight-edge {
     padding: 2px;
     opacity: 0;
@@ -248,8 +248,10 @@
     );
   }
 
-  .spotlight-interactive:is([data-spot-hover], [data-spot-tap]) .spotlight-edge {
-    opacity: 1;
+  @media (hover: hover) and (pointer: fine) {
+    .spotlight-interactive[data-spot-hover] .spotlight-edge {
+      opacity: 1;
+    }
   }
 
   /* Glow behind a hero figure. drop-shadow follows the glyph outline, which a

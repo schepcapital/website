@@ -49,6 +49,8 @@ const {
 
 <script>
   document.addEventListener('astro:page-load', () => {
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
     for (const panel of document.querySelectorAll<HTMLElement>('[data-spotlight]')) {
       const setSpotlightPosition = (event: PointerEvent) => {
         const bounds = panel.getBoundingClientRect();
@@ -62,7 +64,6 @@ const {
         panel.setAttribute('data-spot-hover', '');
       }, { passive: true });
 
-      let tapTimer: ReturnType<typeof setTimeout> | undefined;
       panel.addEventListener('pointerenter', (event) => {
         if (event.pointerType === 'touch') return;
         setSpotlightPosition(event);
@@ -70,13 +71,6 @@ const {
       });
       panel.addEventListener('pointerleave', () => {
         panel.removeAttribute('data-spot-hover');
-      });
-      panel.addEventListener('pointerup', (event) => {
-        if (event.pointerType !== 'touch') return;
-        setSpotlightPosition(event);
-        panel.setAttribute('data-spot-tap', '');
-        clearTimeout(tapTimer);
-        tapTimer = setTimeout(() => panel.removeAttribute('data-spot-tap'), 360);
       });
     }
   });
