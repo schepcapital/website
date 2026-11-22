@@ -13,15 +13,15 @@ npm run preview  # preview the production build
 
 ## Stack
 
-- **Astro 7** — static output, ships ~zero JS (the only client script is the Home/Founder tab toggle, inlined into the page).
-- **Tailwind CSS 4** — via the `@tailwindcss/vite` plugin; design tokens (accent, fonts) live in `src/styles/global.css`.
-- Fonts: IBM Plex Sans / IBM Plex Mono (Google Fonts).
+- **Astro 7** — static pages with a small client-side theme control.
+- **Tailwind CSS 4** — via the `@tailwindcss/vite` plugin, with Hydra’s palette and semantic tokens in `src/styles/`.
+- Fonts: self-hosted Inter Variable and JetBrains Mono Variable.
 
 ## Structure
 
-- `src/pages/index.astro` — the single page (Home + Founder panels). Strategy data is the `strategies` array in its frontmatter.
-- `src/layouts/Layout.astro` — `<head>`, fonts, global styles.
-- `src/assets/logo.webp` — brand logo (auto-optimized by Astro).
+- `src/pages/` — Home, About and Founder.
+- `src/layouts/Layout.astro` — shared navigation, page metadata and theme setup.
+- `src/assets/photo.jpg` — founder portrait, optimized by Astro at build time.
 - `public/CNAME` — custom domain (`schepcapital.com`).
 
 ## Deploy

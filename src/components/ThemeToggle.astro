@@ -1,0 +1,100 @@
+<fieldset id="theme-control" class="theme-control relative flex rounded-[var(--radius-pill)] bg-wash p-0.5 shadow-[inset_0_0_0_1px_var(--sem-line)]" hidden>
+  <legend class="sr-only">Color theme</legend>
+
+  <span aria-hidden="true" class="theme-indicator pointer-events-none absolute inset-y-0.5 left-0.5 w-[calc((100%-4px)/3)] rounded-[var(--radius-pill)] bg-[var(--sem-glass-raised)] shadow-[var(--elevation-control)] transition-transform duration-[var(--dur-slow)] ease-[var(--ease-out)]"></span>
+
+  <button type="button" data-theme-choice="light" title="Light" aria-label="Light" aria-pressed="false" class="theme-option">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="8" cy="8" r="3" />
+      <path d="M8 1.5v1.2M8 13.3v1.2M14.5 8h-1.2M2.7 8H1.5M12.6 3.4l-.85.85M4.25 11.75l-.85.85M12.6 12.6l-.85-.85M4.25 4.25l-.85-.85" />
+    </svg>
+  </button>
+  <button type="button" data-theme-choice="dark" title="Dark" aria-label="Dark" aria-pressed="false" class="theme-option">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M13.5 9.6A5.8 5.8 0 0 1 6.4 2.5a5.8 5.8 0 1 0 7.1 7.1Z" />
+    </svg>
+  </button>
+  <button type="button" data-theme-choice="system" title="System" aria-label="System" aria-pressed="true" class="theme-option">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="1.8" y="3" width="12.4" height="8" rx="1.4" />
+      <path d="M5.5 13.5h5" />
+    </svg>
+  </button>
+</fieldset>
+
+<style>
+  .theme-control[hidden] {
+    display: none;
+  }
+
+  .theme-indicator {
+    transform: translateX(calc(var(--theme-index, 2) * 100%));
+  }
+
+  .theme-option {
+    position: relative;
+    display: grid;
+    z-index: 10;
+    width: 2.75rem;
+    height: 2.75rem;
+    place-items: center;
+    border-radius: var(--radius-pill);
+    color: var(--sem-text-subtle);
+    cursor: pointer;
+    transition: color var(--dur-fast);
+  }
+
+  .theme-option:hover {
+    color: var(--sem-text-muted);
+  }
+
+  .theme-option[aria-pressed="true"] {
+    color: var(--sem-text);
+  }
+</style>
+
+<script>
+  import type { TransitionBeforeSwapEvent } from 'astro:transitions/client';
+
+  const root = document.documentElement;
+  const control = document.querySelector<HTMLFieldSetElement>('#theme-control');
+
+  document.addEventListener('astro:before-swap', (event) => {
+    const nextRoot = (event as TransitionBeforeSwapEvent).newDocument.documentElement;
+    const theme = root.dataset.theme;
+    if (theme) nextRoot.dataset.theme = theme;
+  });
+
+  if (control) {
+    const options = Array.from(control.querySelectorAll<HTMLButtonElement>('[data-theme-choice]'));
+
+    const updateControl = () => {
+      const theme = root.dataset.theme ?? 'system';
+      const activeIndex = options.findIndex((option) => option.dataset.themeChoice === theme);
+      control.style.setProperty('--theme-index', String(activeIndex));
+      for (const [index, option] of options.entries()) {
+        option.setAttribute('aria-pressed', String(index === activeIndex));
+      }
+    };
+
+    for (const option of options) {
+      option.addEventListener('click', () => {
+        const theme = option.dataset.themeChoice ?? 'system';
+        if (theme === 'system') {
+          delete root.dataset.theme;
+        } else {
+          root.dataset.theme = theme;
+        }
+        updateControl();
+        try {
+          localStorage.setItem('schep-theme', theme);
+        } catch {
+          // The theme still applies to the current page.
+        }
+      });
+    }
+
+    updateControl();
+    control.hidden = false;
+  }
+</script>

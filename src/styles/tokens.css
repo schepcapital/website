@@ -1,0 +1,146 @@
+/* Semantic design tokens — "depth and glow".
+ *
+ * Components reference only these names. Raw palette steps and literal colour
+ * values are not permitted in components (Milestone 1 exit criteria).
+ *
+ * The system is dark-first. Depth comes from four stacked effects, and getting
+ * all four right is what separates real glass from a translucent rectangle:
+ *
+ *   1. a blurred, saturated backdrop            (--sem-glass-blur)
+ *   2. a translucent fill that is never flat    (--sem-glass)
+ *   3. a *gradient* hairline rim, bright where light would land and fading to
+ *      nothing on the far edge                  (--sem-rim-*)
+ *   4. a cast shadow tinted with the accent, not neutral black
+ */
+
+:root {
+  /* ---- Ground --------------------------------------------------------- */
+  --sem-canvas: var(--mauve-1);
+  --sem-canvas-deep: var(--mauve-2);
+
+  /* Mesh: three wide, low-opacity fields in different hues. Different hues
+     matter — one colour at three positions reads as a vignette, not a mesh. */
+  --sem-mesh-1: var(--iris-a-6);
+  --sem-mesh-2: var(--cyan-a-5);
+  --sem-mesh-opacity: 1;
+  --sem-grain-opacity: 0.035;
+
+  /* ---- Glass ---------------------------------------------------------- */
+  --sem-glass: color-mix(in oklab, var(--mauve-2) 62%, transparent);
+  --sem-glass-solid: var(--mauve-2);
+  --sem-glass-raised: color-mix(in oklab, var(--mauve-3) 72%, transparent);
+  --sem-glass-blur: 20px;
+  --sem-glass-saturate: 150%;
+
+  /* Rim light: strong at the top-left where the imaginary source sits. */
+  --sem-rim-strong: rgb(0 0 0 / 0.14);
+  --sem-rim-weak: rgb(0 0 0 / 0.05);
+  --sem-rim-highlight: rgb(255 255 255 / 0.75);
+
+  /* ---- Lines ---------------------------------------------------------- */
+  --sem-line: var(--mauve-a-4);
+  --sem-line-strong: var(--mauve-a-6);
+  --sem-line-contrast: var(--mauve-a-8);
+
+  /* ---- Text ----------------------------------------------------------- */
+  --sem-text: var(--mauve-12);
+  --sem-text-muted: var(--mauve-11);
+  --sem-text-subtle: var(--mauve-10);
+  --sem-text-faint: var(--mauve-9);
+  --sem-text-on-accent: #fff;
+
+  /* ---- Signal --------------------------------------------------------- */
+  --sem-accent: var(--iris-9);
+  --sem-accent-hover: var(--iris-10);
+  --sem-accent-surface: var(--iris-a-3);
+  --sem-accent-line: var(--iris-a-7);
+  --sem-accent-text: var(--iris-11);
+  --sem-accent-glow: var(--iris-a-5);
+
+  --sem-secondary: var(--cyan-9);
+  --sem-secondary-text: var(--cyan-11);
+  --sem-secondary-glow: var(--cyan-a-5);
+
+  --sem-success: var(--jade-9);
+  --sem-success-surface: var(--jade-a-3);
+  --sem-success-line: var(--jade-a-7);
+  --sem-success-text: var(--jade-11);
+  --sem-success-glow: var(--jade-a-5);
+
+  --sem-warning: var(--amber-9);
+  --sem-warning-surface: var(--amber-a-3);
+  --sem-warning-line: var(--amber-a-7);
+  --sem-warning-text: var(--amber-11);
+
+  --sem-danger: var(--crimson-9);
+  --sem-danger-surface: var(--crimson-a-3);
+  --sem-danger-line: var(--crimson-a-7);
+  --sem-danger-text: var(--crimson-11);
+  --sem-danger-glow: var(--crimson-a-5);
+
+  --sem-focus: var(--iris-8);
+
+  /* ---- Elevation ------------------------------------------------------ */
+  --sem-shadow-rgb: 30 12 60;
+  --elevation-panel:
+    inset 0 1px 0 0 var(--sem-rim-highlight), 0 1px 2px -1px rgb(var(--sem-shadow-rgb) / 0.1),
+    0 12px 32px -12px rgb(var(--sem-shadow-rgb) / 0.18);
+  --elevation-lifted:
+    inset 0 1px 0 0 var(--sem-rim-highlight), 0 2px 4px -2px rgb(var(--sem-shadow-rgb) / 0.12),
+    0 24px 56px -16px rgb(var(--sem-shadow-rgb) / 0.26);
+  --elevation-control:
+    inset 0 1px 0 0 var(--sem-rim-highlight), inset 0 0 0 1px var(--sem-line),
+    0 1px 2px -1px rgb(var(--sem-shadow-rgb) / 0.12);
+
+  /* ---- Radii ---------------------------------------------------------- */
+  --radius-control: 8px;
+  --radius-card: 14px;
+  --radius-panel: 20px;
+  --radius-pill: 999px;
+
+  /* ---- Motion --------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-instant: 90ms;
+  --dur-fast: 160ms;
+  --dur-slow: 340ms;
+  --dur-drift: 24s;
+}
+
+/* Dark is where this system is designed to live. The rim inverts to a white
+   highlight, the mesh gains strength, and shadows go tinted-black. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --sem-glass: color-mix(in oklab, var(--mauve-2) 55%, transparent);
+    --sem-glass-raised: color-mix(in oklab, var(--mauve-4) 60%, transparent);
+    --sem-rim-strong: rgb(255 255 255 / 0.14);
+    --sem-rim-weak: rgb(255 255 255 / 0.04);
+    --sem-rim-highlight: rgb(255 255 255 / 0.07);
+    --sem-mesh-opacity: 1;
+    --sem-grain-opacity: 0.05;
+    --sem-shadow-rgb: 0 0 0;
+    --elevation-panel:
+      inset 0 1px 0 0 var(--sem-rim-highlight), 0 1px 2px -1px rgb(0 0 0 / 0.5),
+      0 16px 40px -12px rgb(0 0 0 / 0.55);
+    --elevation-lifted:
+      inset 0 1px 0 0 var(--sem-rim-highlight), 0 2px 4px -2px rgb(0 0 0 / 0.5),
+      0 32px 64px -16px rgb(0 0 0 / 0.7);
+  }
+}
+
+:root[data-theme="dark"] {
+  --sem-glass: color-mix(in oklab, var(--mauve-2) 55%, transparent);
+  --sem-glass-raised: color-mix(in oklab, var(--mauve-4) 60%, transparent);
+  --sem-rim-strong: rgb(255 255 255 / 0.14);
+  --sem-rim-weak: rgb(255 255 255 / 0.04);
+  --sem-rim-highlight: rgb(255 255 255 / 0.07);
+  --sem-mesh-opacity: 1;
+  --sem-grain-opacity: 0.05;
+  --sem-shadow-rgb: 0 0 0;
+  --elevation-panel:
+    inset 0 1px 0 0 var(--sem-rim-highlight), 0 1px 2px -1px rgb(0 0 0 / 0.5),
+    0 16px 40px -12px rgb(0 0 0 / 0.55);
+  --elevation-lifted:
+    inset 0 1px 0 0 var(--sem-rim-highlight), 0 2px 4px -2px rgb(0 0 0 / 0.5),
+    0 32px 64px -16px rgb(0 0 0 / 0.7);
+}

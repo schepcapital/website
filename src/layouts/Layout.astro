@@ -1,33 +1,78 @@
 ---
+import { Image } from 'astro:assets';
+import { ClientRouter } from 'astro:transitions';
+import logo from '../assets/logo.webp';
+import ThemeToggle from '../components/ThemeToggle.astro';
 import '../styles/global.css';
 
 interface Props {
   title?: string;
-  description?: string;
+  description: string;
 }
 
-const {
-  title = 'Schep Capital',
-  description = 'Schep Capital runs systematic, fully automated investment strategies.',
-} = Astro.props;
+const { title, description } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const navigation = [
+  { path: '/', label: 'Home' },
+  { path: '/about/', label: 'About' },
+  { path: '/founder/', label: 'Founder' },
+];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" transition:animate="none">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/webp" href="/favicon.webp" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <title>{title}</title>
+    <title>{title ? `${title} · Schep Capital` : 'Schep Capital'}</title>
+    <script is:inline>
+      try {
+        const theme = localStorage.getItem('schep-theme');
+        if (theme === 'light' || theme === 'dark') {
+          document.documentElement.dataset.theme = theme;
+        }
+      } catch {
+        // The system preference still applies when browser storage is unavailable.
+      }
+    </script>
+    <ClientRouter />
   </head>
-  <body class="font-sans text-ink antialiased">
-    <slot />
+  <body class="isolate flex min-h-dvh flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-60 focus:bg-surface focus:p-2">
+      Skip to content
+    </a>
+    <header class="sticky top-0 z-50 bg-[color-mix(in_oklab,var(--sem-canvas)_62%,transparent)] backdrop-blur-2xl backdrop-saturate-150 after:absolute after:inset-x-0 after:-bottom-px after:h-px after:bg-linear-to-r after:from-transparent after:via-line-strong after:to-transparent">
+      <div class="mx-auto grid max-w-6xl grid-cols-[1fr_auto] items-center gap-x-2 px-4 pt-2 sm:flex sm:min-h-16 sm:gap-5 sm:px-6 sm:py-2 lg:px-8">
+        <a href="/" class="flex min-h-11 w-fit shrink-0 items-center gap-2.5">
+          <Image src={logo} alt="" width={60} height={60} loading="eager" class="size-6.5 object-contain" />
+          <span class="text-sm font-semibold tracking-[-0.011em]">schepcapital</span>
+        </a>
+        <nav aria-label="Main navigation" class="col-span-2 row-start-2 grid grid-cols-3 gap-1 py-2 sm:flex sm:py-0">
+          {navigation.map(({ path, label }) => (
+            <a
+              href={path}
+              aria-current={currentPath === (path.replace(/\/$/, '') || '/') ? 'page' : undefined}
+              data-astro-prefetch="viewport"
+              class="flex min-h-11 items-center justify-center rounded-[var(--radius-control)] px-2.5 text-sm font-medium text-muted transition-colors duration-[var(--dur-instant)] hover:bg-wash hover:text-ink aria-[current=page]:bg-wash aria-[current=page]:text-ink"
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+        <div class="col-start-2 row-start-1 h-12 w-34 sm:ml-auto" transition:persist="theme-toggle">
+          <ThemeToggle />
+        </div>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1" class="mx-auto w-full max-w-6xl flex-1 space-y-6 px-4 py-8 sm:space-y-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+      <slot />
+    </main>
+
+    <footer class="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 lg:px-8">
+      <p class="text-xs text-muted">Schep Capital · Personal research project</p>
+    </footer>
   </body>
 </html>

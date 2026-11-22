@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import ButtonLink from '../components/ButtonLink.astro';
+import Panel from '../components/Panel.astro';
+import Layout from '../layouts/Layout.astro';
+import portrait from '../assets/photo.jpg';
+---
+
+<Layout title="Founder" description="Meet Reinier Schep, founder of Schep Capital.">
+  <Panel
+    interactiveSpotlight
+    class="max-w-5xl"
+    contentClass="grid items-center gap-5 p-4 sm:p-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] md:gap-8 lg:p-8"
+  >
+    <Image
+      src={portrait}
+      alt="Reinier Schep"
+      width={960}
+      widths={[320, 480, 640, 960]}
+      sizes="(min-width: 68rem) 384px, (min-width: 48rem) 35vw, (min-width: 24rem) 320px, calc(100vw - 4rem)"
+      loading="eager"
+      class="mx-auto aspect-square w-full max-w-80 rounded-card object-cover md:max-w-sm"
+    />
+    <div class="min-w-0 max-w-xl">
+      <p class="eyebrow">Founder</p>
+      <h1 class="mt-2 text-3xl text-balance sm:mt-3 sm:text-4xl font-semibold tracking-[-0.032em] text-ink">Reinier Schep</h1>
+      <p class="mt-3 text-lg leading-relaxed text-muted">
+        I started Schep Capital to research and build systematic investment strategies. I’m interested
+        in how much you can learn from widely available market data when the research question is
+        specific and the test is realistic.
+      </p>
+      <p class="mt-3 text-lg leading-relaxed text-muted">
+        My current focus is cross-sectional equity research. I’m working through the full path
+        from a signal hypothesis to a portfolio, with particular attention to when the data was
+        available, what could have been traded, and how much of the signal survives costs.
+      </p>
+      <ButtonLink href="mailto:reinier@schepcapital.com" class="mt-5">Get in touch</ButtonLink>
+    </div>
+  </Panel>
+</Layout>

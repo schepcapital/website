@@ -1,0 +1,55 @@
+---
+import Panel from '../components/Panel.astro';
+import Layout from '../layouts/Layout.astro';
+
+const methodology = [
+  {
+    title: 'Check the data',
+    detail: 'I pull daily open, high, low, close, and volume data from Yahoo Finance using yfinance. Before training, I check for anomalies such as unusual price spikes that could distort the results.',
+  },
+  {
+    title: 'Define the asset universe',
+    detail: 'I define which assets are eligible for each experiment so I can compare algorithms on the same universe.',
+  },
+  {
+    title: 'Rank the universe each day',
+    detail: 'Each algorithm ranks the eligible assets by expected return. I train on earlier data, test the rankings on the next unseen period, then move the window forward and repeat. I also test whether combining models improves the rankings.',
+  },
+  {
+    title: 'Decide how far to lean long or short',
+    detail: 'I use the ranking to find candidates for the long and short sides. At each timestep, a separately trained model chooses one of five net exposures for the book: strongly short, slightly short, neutral, slightly long, or strongly long.',
+  },
+  {
+    title: 'Adjust position weights for risk',
+    detail: 'I use volatility and how assets move together to size positions. I also cap individual weights and overall exposure. The goal is to improve risk-adjusted returns while keeping drawdowns manageable.',
+  },
+  {
+    title: 'Trade toward the target portfolio',
+    detail: 'I calculate a target portfolio and compare it with the positions already held. I move toward the target when the expected benefit justifies the cost of trading. If the improvement is small, keeping some positions as they are can be the better choice.',
+  },
+];
+---
+
+<Layout
+  title="About"
+  description="The Schep Capital research pipeline, from daily market data and walk-forward testing to long/short portfolio construction."
+>
+  <header class="max-w-3xl">
+    <p class="eyebrow">Research approach</p>
+    <h1 class="mt-2 text-3xl text-balance sm:mt-3 sm:text-4xl font-semibold tracking-[-0.032em] text-ink">
+      From daily market data to a <span class="bg-linear-to-r from-accent-text to-secondary-text bg-clip-text text-transparent">long/short portfolio</span>
+    </h1>
+    <p class="mt-3 max-w-xl text-lg leading-relaxed text-muted">
+      My goal is to deliver steady returns and maximize the Sortino ratio while keeping maximum
+      drawdown below 10%.
+    </p>
+  </header>
+
+  <div class="grid gap-4 md:grid-cols-2 lg:gap-5">
+    {methodology.map(({ title, detail }, index) => (
+      <Panel title={title} step={index + 1} interactiveSpotlight>
+        <p class="text-lg leading-relaxed text-muted">{detail}</p>
+      </Panel>
+    ))}
+  </div>
+</Layout>

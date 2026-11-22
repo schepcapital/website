@@ -1,12 +1,12 @@
 # Schep Capital website
 
-Static marketing site — **Astro 7 + Tailwind 4**, deployed to GitHub Pages (`schepcapital.com`).
-See `README.md` for dev/build/deploy. Strategy numbers shown on the site come from the **BBTerminal API** (below).
+Static public site with Home, About and Founder pages, built with Astro 7 and Tailwind 4
+for GitHub Pages (`schepcapital.com`). See `README.md` for development and build commands.
+The current site uses no strategy data feeds or API credentials.
 
-## BBTerminal API
+## Historical BBTerminal API notes
 
-Source of the fund's live/backtested figures. Plan: a daily GitHub Action fetches from this API,
-writes JSON into the repo, and the build bakes it in — so visitors never hit the API.
+These notes describe a previous plan for publishing live and backtested figures.
 
 ### Auth (Supabase password grant → Bearer)
 
